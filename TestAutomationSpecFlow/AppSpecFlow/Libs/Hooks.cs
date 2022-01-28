@@ -1,4 +1,5 @@
-﻿using BoDi;
+﻿using AppTargets.Configuration;
+using BoDi;
 using Core;
 using Core.FileIO;
 using Core.Logging;
@@ -15,7 +16,6 @@ namespace AppSpecFlow.Libs
         {
             var assembly = Assembly.Load("AppSpecFlow");
             TargetForms.Instance.PopulateList(assembly);
-            DebugOutput.Log("Hello!");
             //var this = TargetCon
             var thisRun = new TestRunProperties("hello");
             var fileDirectory = ".\\AppTargets\\Resources\\";
@@ -24,10 +24,8 @@ namespace AppSpecFlow.Libs
             {
                 DebugOutput.Log($"No FILE @ {fileDirectory + settingsFileName}");
             }
-            else
-            {
-                DebugOutput.Log($"File found! {fileDirectory + settingsFileName}");
-            }
+            TargetConfiguration.ReadJson();
+            DebugOutput.Log($"In hooks > {TargetConfiguration.Configuration.ApplicationType}");
         }
 
 

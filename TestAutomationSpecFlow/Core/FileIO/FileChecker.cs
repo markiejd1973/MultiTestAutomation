@@ -12,6 +12,7 @@ namespace Core.FileIO
             DebugOutput.Log($"Current Directory is {currentDirectory}");
             if (currentDirectory.Contains("bin") && currentDirectory.Contains("Debug"))
             {
+                DebugOutput.Log($"Need to move up directory");
                 MoveUpToProjectDirectory();
             }
             return File.Exists(pathAndFileName);
