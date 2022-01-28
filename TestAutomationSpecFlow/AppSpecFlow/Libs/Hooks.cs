@@ -15,6 +15,8 @@ namespace AppSpecFlow.Libs
             var assembly = Assembly.Load("AppSpecFlow");
             TargetForms.Instance.PopulateList(assembly);
             DebugOutput.Log("Hello!");
+            //var this = TargetCon
+            var thisRun = new TestRunProperties("hello");
         }
 
 
