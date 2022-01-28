@@ -1,5 +1,6 @@
 ﻿using BoDi;
 using Core;
+using Core.FileIO;
 using Core.Logging;
 using System.Reflection;
 
@@ -17,6 +18,16 @@ namespace AppSpecFlow.Libs
             DebugOutput.Log("Hello!");
             //var this = TargetCon
             var thisRun = new TestRunProperties("hello");
+            var fileDirectory = ".\\AppTargets\\Resources\\";
+            var settingsFileName = "settings.json";
+            if(!FileChecker.FileCheck(fileDirectory + settingsFileName))
+            {
+                DebugOutput.Log($"No FILE @ {fileDirectory + settingsFileName}");
+            }
+            else
+            {
+                DebugOutput.Log($"File found! {fileDirectory + settingsFileName}");
+            }
         }
 
 
