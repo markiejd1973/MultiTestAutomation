@@ -13,7 +13,7 @@ namespace AppTargets.Configuration
         ///     Environment variable that is read to get the target environment name
         /// </summary>
         private const string EnvironmentVariable = "put file name here";
-        public static TargetConfigurationData Configuration { get; private set; } 
+        public static TargetConfigurationData Configuration { get; private set; }
 
         public class TargetConfigurationData
         {
