@@ -2,6 +2,7 @@ D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\bin\Debug\net6.0\Core.dep
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\bin\Debug\net6.0\Core.dll
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\bin\Debug\net6.0\ref\Core.dll
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\bin\Debug\net6.0\Core.pdb
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.csproj.AssemblyReference.cache
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.GeneratedMSBuildEditorConfig.editorconfig
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.AssemblyInfoInputs.cache
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.AssemblyInfo.cs
@@ -9,4 +10,3 @@ D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.csp
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.dll
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\ref\Core.dll
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.pdb
-D:\Repos\01.TestAutomation\TestAutomationSpecFlow\Core\obj\Debug\net6.0\Core.csproj.AssemblyReference.cache
