@@ -16,14 +16,6 @@ namespace AppSpecFlow.Libs
         {
             var assembly = Assembly.Load("AppSpecFlow");
             TargetForms.Instance.PopulateList(assembly);
-            //var this = TargetCon
-            var thisRun = new TestRunProperties("hello");
-            var fileDirectory = ".\\AppTargets\\Resources\\";
-            var settingsFileName = "settings.json";
-            if(!FileChecker.FileCheck(fileDirectory + settingsFileName))
-            {
-                DebugOutput.Log($"No FILE @ {fileDirectory + settingsFileName}");
-            }
             TargetConfiguration.ReadJson();
             DebugOutput.Log($"In hooks > {TargetConfiguration.Configuration.ApplicationType}");
         }

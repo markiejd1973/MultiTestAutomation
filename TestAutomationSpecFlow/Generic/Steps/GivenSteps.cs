@@ -9,11 +9,12 @@ namespace Generic.Steps
     public class GivenSteps
     {
 
+
         [Given("the first number is (.*)")]
         public void GivenTheFirstNumberIs(int number)
         {
             DebugOutput.Log($"GivenTheFirstNumberIs {number}");
-            DebugOutput.Log($"jytytyjytj {TargetConfiguration.Configuration.DateFormat}");
+            DebugOutput.Log($"jytytyjytj {TargetConfiguration.Configuration.PositiveTimeout}");
         }
 
     }

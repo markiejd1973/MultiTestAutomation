@@ -21,8 +21,8 @@ namespace AppTargets.Configuration
             public string StartUrlx { get; set; }
             public string StartUrl { get; set; }
             public string ApiUrl { get; set; }
-            public string PositiveTimeout { get; set; }
-            public string NegativeTimeout { get; set; }
+            public int PositiveTimeout { get; set; }
+            public int NegativeTimeout { get; set; }
             public string DateFormat { get; set; }
             public string AreaPath { get; set; }
             public bool OutputOnly { get; set; }
