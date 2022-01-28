@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "JKNX5eMErIS48GxGO/JxBVMI1TBq0HN1p3CekztNQFYwoDkhKZ87KmTPXmOc90JurPXOlo4eE/PGmcyVt7+e8w==",
+  "dgSpecHash": "BcZfPffn/e32AKOMY53YtpMMwAeoppxjboUB+adXs/8h79+AJ6IXckH6x9mi9INeGc4BFIYmV38umIq6mlrGbw==",
   "success": true,
   "projectFilePath": "D:\\Repos\\01.TestAutomation\\TestAutomationSpecFlow\\Core\\Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\marki\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\marki\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

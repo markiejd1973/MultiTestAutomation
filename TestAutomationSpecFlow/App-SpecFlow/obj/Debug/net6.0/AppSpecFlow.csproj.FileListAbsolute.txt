@@ -110,3 +110,11 @@ D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\ref\AppSpecFlow.dll
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\AppSpecFlow.pdb
 D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\AppSpecFlow.genruntimeconfig.cache
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\AppTargets.dll
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\Core.dll
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\Generic.dll
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\AppTargets.pdb
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\Core.pdb
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\Generic.pdb
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\WebDriver.dll
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\bin\Debug\net6.0\specflow.json

@@ -20,4 +20,10 @@
     <Folder Include="Support\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\App-Targets\AppTargets.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Generic\Generic.csproj" />
+  </ItemGroup>
+
 </Project>
