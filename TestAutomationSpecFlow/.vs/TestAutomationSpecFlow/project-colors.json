@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "04f2f598-a846-4081-a7fb-e88cb2991774": {
+      "ProjectGuid": "04f2f598-a846-4081-a7fb-e88cb2991774",
+      "DisplayName": "App-SpecFlow",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

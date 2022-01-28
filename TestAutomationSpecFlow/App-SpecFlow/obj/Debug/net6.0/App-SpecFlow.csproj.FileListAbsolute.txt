@@ -1,0 +1,5 @@
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\App-SpecFlow.csproj.AssemblyReference.cache
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\App-SpecFlow.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\App-SpecFlow.AssemblyInfoInputs.cache
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\App-SpecFlow.AssemblyInfo.cs
+D:\Repos\01.TestAutomation\TestAutomationSpecFlow\App-SpecFlow\obj\Debug\net6.0\App-SpecFlow.csproj.CoreCompileInputs.cache
