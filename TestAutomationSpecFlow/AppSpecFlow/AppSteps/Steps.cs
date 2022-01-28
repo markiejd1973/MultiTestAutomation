@@ -1,3 +1,5 @@
+using AppSpecFlow.Libs;
+using AppTargets.Configuration;
 using Core.Logging;
 
 namespace App_SpecFlow.AppSteps
@@ -8,7 +10,8 @@ namespace App_SpecFlow.AppSteps
         [Then(@"I Am Here")]
         public void ThenIAmHere()
         {
-            DebugOutput.Log($"ThenIAmHere ");
+            DebugOutput.Log($"ThenIAmHere >>>>>>>>>>>>");
+            DebugOutput.Log(Hooks.runConfig.ApplicationType);
         }
 
 

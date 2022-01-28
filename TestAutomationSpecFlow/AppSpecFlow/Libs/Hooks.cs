@@ -1,4 +1,5 @@
-﻿using BoDi;
+﻿using AppTargets.Configuration;
+using BoDi;
 using Core;
 using Core.FileIO;
 using Core.Logging;
@@ -9,6 +10,7 @@ namespace AppSpecFlow.Libs
     [Binding]
     public class Hooks
     {
+        public static TargetConfiguration.TargetConfigurationData runConfig;
 
         [BeforeTestRun]
         public static void TestSetup()
@@ -28,6 +30,10 @@ namespace AppSpecFlow.Libs
             {
                 DebugOutput.Log($"File found! {fileDirectory + settingsFileName}");
             }
+            runConfig = new TargetConfiguration.TargetConfigurationData();
+            TargetConfiguration.TargetConfigurationData tae = TargetConfiguration.ReadJson();
+            runConfig = tae;
+            DebugOutput.Log($"rrrrr {runConfig.ApiDatabaseName}");
         }
 
 

@@ -1,4 +1,8 @@
-﻿using System.Text.Json;
+﻿using Core.FileIO;
+using Core.Logging;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 
 namespace AppTargets.Configuration
@@ -9,36 +13,55 @@ namespace AppTargets.Configuration
         ///     Environment variable that is read to get the target environment name
         /// </summary>
         private const string EnvironmentVariable = "put file name here";
-        public string Name { get; set; }
-        public int Year { get; set; }
 
-        public class RootObject
+        public class TargetConfigurationData
         {
-            public string companyName { get; set; }
-            public string companyNumber { get; set; }
+            public string ApplicationType { get; set; }
+            public string StartUrlx { get; set; }
+            public string StartUrl { get; set; }
+            public string ApiUrl { get; set; }
+            public string PositiveTimeout { get; set; }
+            public string NegativeTimeout { get; set; }
+            public string DateFormat { get; set; }
+            public string AreaPath { get; set; }
+            public bool OutputOnly { get; set; }
+            public bool FeatureFileOnly { get; set; }
+            public string ApiDatabaseName { get; set; }
+            public string InstallLocation { get; set; }
+            public int TimeoutMultiplie { get; set; }
         }
 
-        //private TargetConfiguration()
-        //{
-        //    var fileName = $"targetSettings.{Environment}.json";
-        //    var dataPath = @$".\AppTargets\Resources\{fileName}";
-        //    using (StreamReader r = new StreamReader(dataPath))
-        //    {
-        //        string jsonRead = r.ReadToEnd();
-        //    }
-        //    string jsonString = "{\"a\": 1,\"b\": \"string value\",\"c\":[{\"Value\": 1}, {\"Value\": 2,\"SubObject\":[{\"SubValue\":3}]}]}";
-
-        //    JsonValue json = JsonValue.Parse(jsonString);
-        //}
+        //public static void TargetConfiguration()
+        public static TargetConfigurationData? ReadJson()
+        {
+            var fileName = $"targetSettings.{Environment}.json";
+            var directory = ".\\AppTargets\\Resources\\";
+            var fullFileName = directory + fileName;
+            if (!FileChecker.FileCheck(fullFileName))
+            {
+                DebugOutput.Log($"Unable to find the file {fullFileName}");
+                return null;
+            }
+            var jsonText = File.ReadAllText(fullFileName);
+            try
+            {
+                var obj = JsonConvert.DeserializeObject<TargetConfigurationData>(jsonText);
+                DebugOutput.Log($">>>> {obj.AreaPath}");
+                return obj;
+            }
+            catch
+            {
+                DebugOutput.Log($"We out ere");
+                return null;
+            }
+        }
 
 
         /// <summary>
         ///     Gets the name of the configured environment.  Defaults to Development, i.e. localhost:4200
         /// </summary>
-        private string Environment =>
+        private static string Environment =>
             System.Environment.GetEnvironmentVariable(EnvironmentVariable) ?? "development";
-
-        public TargetSettings Settings { get; }
 
     }
 }
