@@ -10,14 +10,12 @@ namespace AppSpecFlow.Libs
     [Binding]
     public class Hooks
     {
-        public static TargetConfiguration.TargetConfigurationData runConfig;
 
         [BeforeTestRun]
         public static void TestSetup()
         {
             var assembly = Assembly.Load("AppSpecFlow");
             TargetForms.Instance.PopulateList(assembly);
-            DebugOutput.Log("Hello!");
             //var this = TargetCon
             var thisRun = new TestRunProperties("hello");
             var fileDirectory = ".\\AppTargets\\Resources\\";
@@ -26,14 +24,8 @@ namespace AppSpecFlow.Libs
             {
                 DebugOutput.Log($"No FILE @ {fileDirectory + settingsFileName}");
             }
-            else
-            {
-                DebugOutput.Log($"File found! {fileDirectory + settingsFileName}");
-            }
-            runConfig = new TargetConfiguration.TargetConfigurationData();
-            TargetConfiguration.TargetConfigurationData tae = TargetConfiguration.ReadJson();
-            runConfig = tae;
-            DebugOutput.Log($"rrrrr {runConfig.ApiDatabaseName}");
+            TargetConfiguration.ReadJson();
+            DebugOutput.Log($"In hooks > {TargetConfiguration.Configuration.ApplicationType}");
         }
 
 

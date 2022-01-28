@@ -13,6 +13,7 @@ namespace Generic.Steps
         public void GivenTheFirstNumberIs(int number)
         {
             DebugOutput.Log($"GivenTheFirstNumberIs {number}");
+            DebugOutput.Log($"jytytyjytj {TargetConfiguration.Configuration.DateFormat}");
         }
 
     }

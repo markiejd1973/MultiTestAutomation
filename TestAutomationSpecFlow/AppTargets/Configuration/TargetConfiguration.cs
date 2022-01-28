@@ -13,6 +13,7 @@ namespace AppTargets.Configuration
         ///     Environment variable that is read to get the target environment name
         /// </summary>
         private const string EnvironmentVariable = "put file name here";
+        public static TargetConfigurationData Configuration { get; private set; } 
 
         public class TargetConfigurationData
         {
@@ -46,8 +47,9 @@ namespace AppTargets.Configuration
             try
             {
                 var obj = JsonConvert.DeserializeObject<TargetConfigurationData>(jsonText);
-                DebugOutput.Log($">>>> {obj.AreaPath}");
-                return obj;
+                Configuration = obj;
+                DebugOutput.Log($">>>> {obj.AreaPath}  ... {Configuration.AreaPath}");
+                return Configuration;
             }
             catch
             {

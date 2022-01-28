@@ -11,7 +11,7 @@ namespace App_SpecFlow.AppSteps
         public void ThenIAmHere()
         {
             DebugOutput.Log($"ThenIAmHere >>>>>>>>>>>>");
-            DebugOutput.Log(Hooks.runConfig.ApplicationType);
+            DebugOutput.Log(TargetConfiguration.Configuration.ApplicationType);
         }
 
 
