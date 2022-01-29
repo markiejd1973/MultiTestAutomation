@@ -11,5 +11,6 @@
   "FeatureFileOnly": false,
   "ApiDatabaseName": "aa-local-bdd-app-sqldb",
   "InstallLocation": "c:\\temp\\IP_2021_4_4_0.exe",
-  "TimeoutMultiplie": 1
+  "TimeoutMultiplie": 1,
+  "SkipOnFailure":  false
 }

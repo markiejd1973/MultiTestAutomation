@@ -1,4 +1,4 @@
-﻿using AppTargets.Configuration;
+﻿using Core.Configuration;
 using BoDi;
 using Core;
 using Core.FileIO;
@@ -30,7 +30,7 @@ namespace AppSpecFlow.Libs
         [BeforeFeature]
         public static void FeatureSetup(FeatureContext featureContext)
         {
-
+            SetEpoch();
         }
 
         [AfterFeature]
@@ -63,6 +63,16 @@ namespace AppSpecFlow.Libs
 
         }
 
+        /// <summary>
+        /// Set the epoch value for each feature file so unique text is available
+        /// </summary>
+        private static void SetEpoch()
+        {
+            var epochNumber = DateTime.UtcNow.Ticks / 10000000 - 63082281600;
+            var epoch = epochNumber.ToString();
+            EPOCHControl.epoch = epoch;
+            DebugOutput.Log($"This feature test unique id is equal to {epoch}");
+        }
 
     }
 }

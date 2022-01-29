@@ -12,3 +12,5 @@ Scenario: Add two numbers
 	When the two numbers are added
 	Then the result should be 120
 	Then I Am Here
+	Given I Have Failed
+	Given the first number is 50

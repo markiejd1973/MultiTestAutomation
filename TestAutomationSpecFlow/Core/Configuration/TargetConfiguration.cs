@@ -5,7 +5,7 @@ using System.Collections;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-namespace AppTargets.Configuration
+namespace Core.Configuration
 {
     public class TargetConfiguration
     {
@@ -17,19 +17,20 @@ namespace AppTargets.Configuration
 
         public class TargetConfigurationData
         {
-            public string ApplicationType { get; set; }
-            public string StartUrlx { get; set; }
-            public string StartUrl { get; set; }
-            public string ApiUrl { get; set; }
+            public string ApplicationType { get; set; } = "none";
+            public string StartUrlx { get; set; } = "none";
+            public string StartUrl { get; set; } = "none";
+            public string ApiUrl { get; set; } = "none";
             public int PositiveTimeout { get; set; }
             public int NegativeTimeout { get; set; }
-            public string DateFormat { get; set; }
-            public string AreaPath { get; set; }
+            public string DateFormat { get; set; } = "none";
+            public string AreaPath { get; set; } = "none";
             public bool OutputOnly { get; set; }
             public bool FeatureFileOnly { get; set; }
-            public string ApiDatabaseName { get; set; }
-            public string InstallLocation { get; set; }
+            public string ApiDatabaseName { get; set; } = "none";
+            public string InstallLocation { get; set; } = "none";
             public int TimeoutMultiplie { get; set; }
+            public bool SkipOnFailure { get; set; }
         }
 
         //public static void TargetConfiguration()

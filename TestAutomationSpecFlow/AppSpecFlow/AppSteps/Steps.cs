@@ -1,5 +1,5 @@
 using AppSpecFlow.Libs;
-using AppTargets.Configuration;
+using Core.Configuration;
 using Core.Logging;
 
 namespace App_SpecFlow.AppSteps
