@@ -14,6 +14,7 @@ namespace Generic.Steps
             DebugOutput.Log($"Failure {message}");
             FailedCount += 1;
             Failed = true;
+            Assert.Fail(message);
         }
 
         public static bool OuputProc(string proc, int timeOut = 0)

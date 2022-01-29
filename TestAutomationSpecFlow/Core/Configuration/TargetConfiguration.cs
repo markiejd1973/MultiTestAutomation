@@ -33,7 +33,10 @@ namespace Core.Configuration
             public bool SkipOnFailure { get; set; }
         }
 
-        //public static void TargetConfiguration()
+        /// <summary>
+        /// Populates class with details from Json File
+        /// </summary>
+        /// <returns></returns>
         public static TargetConfigurationData? ReadJson()
         {
             var fileName = $"targetSettings.{Environment}.json";

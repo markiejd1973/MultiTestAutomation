@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,12 @@ namespace Generic.Steps.Helpers.Interfaces
 {
     public interface IStepHelpers
     {
-        String CurrentPage { get; set; } 
+        IButtonStepHelper Button { get; }
+    }
+
+    public interface IStepHelper
+    {
+        FormBase CurrentPage { get; set; } 
     }
 }
 
