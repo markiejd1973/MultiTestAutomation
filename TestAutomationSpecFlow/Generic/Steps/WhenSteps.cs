@@ -8,7 +8,7 @@ namespace Generic.Steps
     [Binding]
     public class WhenSteps : StepsBase
     {
-        public WhenSteps(IStepHelpers helpers) : base(helpers)
+        public WhenSteps(IStepHelper helpers) : base(helpers)
         {
         }
 

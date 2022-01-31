@@ -1,4 +1,5 @@
-﻿using Generic.Steps.Helpers.Interfaces;
+﻿using Core;
+using Generic.Steps.Helpers.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using TechTalk.SpecFlow;
 
 namespace Generic.Steps.Helpers.Classes
 {
-    public class StepHelper : IStepHelpers
+    public class StepHelper : IStepHelper
 	{
 		protected StepHelper(FeatureContext featureContext)
 		{
@@ -17,9 +18,9 @@ namespace Generic.Steps.Helpers.Classes
 
 		private FeatureContext CurrentFeatureContext { get; }
 
-		public String CurrentPage
+		public FormBase CurrentPage
 		{
-			get => CurrentFeatureContext.Get<String>();
+			get => CurrentFeatureContext.Get<FormBase>();
 			set => CurrentFeatureContext.Set(value);
 		}
 	}

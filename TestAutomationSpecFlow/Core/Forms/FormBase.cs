@@ -12,11 +12,11 @@ namespace Core
 	{
 		protected FormBase(By locator, string name) : base(locator, name)
 		{
-			Elements = new Dictionary<string, string>();
+			Elements = new Dictionary<string, By>();
 			ElementXPath = new Dictionary<string, string>();
 		}
 
-		protected IDictionary<string, string> Elements { get; }
+		protected IDictionary<string, By> Elements { get; }
 
 		public IDictionary<string, string> ElementXPath { get; protected set; }
 

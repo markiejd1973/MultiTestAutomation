@@ -4,6 +4,8 @@ using Core;
 using Core.FileIO;
 using Core.Logging;
 using System.Reflection;
+using Generic.Steps.Helpers.Interfaces;
+using Generic.Steps.Helpers.Classes;
 
 namespace AppSpecFlow.Libs
 {
@@ -42,6 +44,7 @@ namespace AppSpecFlow.Libs
         [BeforeScenario]
         public void ScenarioSetup(ScenarioContext scenarioContext)
         {
+            RegisterTypes(scenarioContext);
 
         }
 
@@ -72,6 +75,14 @@ namespace AppSpecFlow.Libs
             var epoch = epochNumber.ToString();
             EPOCHControl.epoch = epoch;
             DebugOutput.Log($"This feature test unique id is equal to {epoch}");
+        }
+
+
+        private static void RegisterTypes(ScenarioContext scenarioContext)
+        {
+            var container = (IObjectContainer)scenarioContext.GetBindingInstance(typeof(IObjectContainer));
+            container.RegisterTypeAs<IStepHelper, IStepHelper>();
+            container.RegisterInstanceAs<ITargetForms>(TargetForms.Instance);
         }
 
     }

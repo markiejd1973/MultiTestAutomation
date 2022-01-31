@@ -65,12 +65,13 @@ namespace Core
 
 		public void PopulateList(Assembly assembly)
 		{
+			DebugOutput.Log($"We here!");
 			forms.Clear();
 
 			var q = assembly.GetTypes()
 				.Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(FormBase)))
 				.ToList();
-
+			DebugOutput.Log($"We have {q.Count} things!");
 			foreach (var type in q)
 			{
 				var f = Activator.CreateInstance(type) as FormBase;
