@@ -1,18 +1,34 @@
 using AppSpecFlow.Libs;
 using Core.Configuration;
 using Core.Logging;
+using Generic.Steps;
+using Generic.Steps.Helpers.Interfaces;
 
-namespace App_SpecFlow.AppSteps
+namespace AppSpecFlow.AppSteps
 {
     [Binding]
-    public sealed class Steps
+    public class Steps : StepsBase
     {
+        public Steps(IStepHelpers helpers
+            ) : base(helpers)
+        {
+        }
+
+
         [Then(@"I Am Here")]
         public void ThenIAmHere()
         {
             DebugOutput.Log($"ThenIAmHere >>>>>>>>>>>>");
             DebugOutput.Log(TargetConfiguration.Configuration.ApplicationType);
+            Helpers.Button.Hello();
         }
+
+        [Given(@"the first number is (.*)")]
+        public void GivenTheFirstNumberIs(int p0)
+        {
+            DebugOutput.Log($"GivenTheFirstNumberIs ");
+        }
+
 
 
         [When("the two numbers are added")]

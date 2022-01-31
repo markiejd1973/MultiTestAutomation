@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace Generic.Steps.Helpers.Interfaces
 {
-    public interface IStepHelpers
-    {
-        IButtonStepHelper Button { get; }
-
-    }
 
     public interface IStepHelper
     {

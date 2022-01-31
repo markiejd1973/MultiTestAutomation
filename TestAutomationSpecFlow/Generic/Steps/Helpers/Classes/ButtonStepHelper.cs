@@ -20,18 +20,8 @@ namespace Generic.Steps.Helpers.Classes
 
         public string Hello()
         {
-            CurrentPage = targetForms["login"];
-            DebugOutput.Log($"Proc - GetCurrentPageName");
-            var fullPage = CurrentPage.ToString();
-            DebugOutput.Log($"Full Page Name = {fullPage}");
-            var fixShortPageNameArray = fullPage.Split(".");
-            var fixShortPageNameLength = fixShortPageNameArray.Length;
-            DebugOutput.Log($"We have {fixShortPageNameLength} texts in our full page name");
-            var fixShortPageName = fixShortPageNameArray[fixShortPageNameLength - 1];
-            DebugOutput.Log($"Fixed short page name = {fixShortPageName}");
-            var finalPage = fixShortPageName.Replace("Page", "");
-            DebugOutput.Log($"RETURNING {finalPage}");
-            return finalPage;
+            DebugOutput.Log($"Proc - HELLO");
+            return "hello";
         }
 
     }

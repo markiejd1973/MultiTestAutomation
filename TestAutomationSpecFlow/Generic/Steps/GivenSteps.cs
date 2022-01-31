@@ -1,14 +1,18 @@
 ﻿
 using Core.Configuration;
 using Core.Logging;
+using Generic.Steps.Helpers.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
 namespace Generic.Steps
 {
     [Binding]
-    public class GivenSteps
+    public class GivenSteps : StepsBase
     {
+        public GivenSteps(IStepHelpers helpers) : base(helpers)
+        {
+        }
 
         [Given(@"I Have Failed")]
         public void GivenIHaveFailed()

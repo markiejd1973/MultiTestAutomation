@@ -81,7 +81,7 @@ namespace AppSpecFlow.Libs
         private static void RegisterTypes(ScenarioContext scenarioContext)
         {
             var container = (IObjectContainer)scenarioContext.GetBindingInstance(typeof(IObjectContainer));
-            container.RegisterTypeAs<IStepHelper, IStepHelper>();
+            container.RegisterTypeAs<StepHelpers, IStepHelpers>();
             container.RegisterInstanceAs<ITargetForms>(TargetForms.Instance);
         }
 

@@ -7,11 +7,11 @@ namespace Generic.Steps
 	/// </summary>
 	public class StepsBase
 	{
-		protected StepsBase(IStepHelper helpers)
+		protected StepsBase(IStepHelpers helpers)
 		{
 			Helpers = helpers;
 		}
 
-		protected IStepHelper Helpers { get; }
+		protected IStepHelpers Helpers { get; }
 	}
 }
