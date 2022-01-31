@@ -13,7 +13,7 @@ namespace Generic.Steps.Helpers.Classes
     public class ButtonStepHelper : StepHelper, IButtonStepHelper
     {
         private readonly ITargetForms targetForms;
-        public ButtonStepHelper(FeatureContext featureContext) : base(featureContext)
+        public ButtonStepHelper(FeatureContext featureContext, ITargetForms targetForms) : base(featureContext)
         {
             this.targetForms = targetForms;
         }
@@ -21,8 +21,10 @@ namespace Generic.Steps.Helpers.Classes
         public string Hello()
         {
             DebugOutput.Log($"Proc - HELLO");
-            //var expectedPage = targetForms["login"];
-
+            var expectedPage = targetForms["login"];
+            DebugOutput.Log($"PAGE = {expectedPage.Name}");
+            var locator = expectedPage.Elements["Test"];
+            DebugOutput.Log($"We have a locator of {locator}");
             return "hello";
         }
 

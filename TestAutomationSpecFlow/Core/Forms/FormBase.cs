@@ -16,7 +16,7 @@ namespace Core
 			ElementXPath = new Dictionary<string, string>();
 		}
 
-		protected IDictionary<string, By> Elements { get; }
+		public IDictionary<string, By> Elements { get; }
 
 		public IDictionary<string, string> ElementXPath { get; protected set; }
 

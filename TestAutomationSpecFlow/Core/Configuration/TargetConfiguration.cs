@@ -31,6 +31,7 @@ namespace Core.Configuration
             public string InstallLocation { get; set; } = "none";
             public int TimeoutMultiplie { get; set; }
             public bool SkipOnFailure { get; set; }
+            public string FirstPage { get; set; }
         }
 
         //public static void TargetConfiguration()

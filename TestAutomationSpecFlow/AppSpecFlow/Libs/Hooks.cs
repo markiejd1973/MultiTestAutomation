@@ -20,6 +20,7 @@ namespace AppSpecFlow.Libs
             TargetForms.Instance.PopulateList(assembly);
             TargetConfiguration.ReadJson();
             DebugOutput.Log($"In hooks > {TargetConfiguration.Configuration.ApplicationType}");
+            DebugOutput.Log($"Want First Page to be > {TargetConfiguration.Configuration.FirstPage}");
         }
 
 

@@ -26,7 +26,7 @@ namespace Generic.Steps.Helpers.Classes
 
         private void InitializeHelpers()
         {
-            Button = new ButtonStepHelper(featureContext);
+            Button = new ButtonStepHelper(featureContext, targetForms);
         }
 
     }
