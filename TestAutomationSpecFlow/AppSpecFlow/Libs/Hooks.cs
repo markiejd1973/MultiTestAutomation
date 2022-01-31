@@ -16,7 +16,7 @@ namespace AppSpecFlow.Libs
         [BeforeTestRun]
         public static void TestSetup()
         {
-            var assembly = Assembly.Load("AppSpecFlow");
+            var assembly = Assembly.Load("AppTargets");
             TargetForms.Instance.PopulateList(assembly);
             TargetConfiguration.ReadJson();
             DebugOutput.Log($"In hooks > {TargetConfiguration.Configuration.ApplicationType}");
