@@ -1,4 +1,5 @@
 ﻿using Core;
+using Generic.Steps.Helpers.Classes;
 using Generic.Steps.Helpers.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,11 @@ namespace Generic.Steps.Helpers.Classes
             InitializeHelpers();
         }
 
+        public IButtonStepHelper Button { get; private set; }   
+
         private void InitializeHelpers()
         {
-
+            Button = new ButtonStepHelper(featureContext);
         }
 
     }
