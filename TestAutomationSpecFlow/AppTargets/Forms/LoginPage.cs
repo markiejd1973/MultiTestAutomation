@@ -1,6 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using Core;
+using OpenQA.Selenium;
 
-namespace Core.Forms.Application
+namespace AppTargets.Forms
 {
     public class LoginPage : FormBase
     {
