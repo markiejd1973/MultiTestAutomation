@@ -8,5 +8,6 @@ namespace Generic.Steps.Helpers.Interfaces
 {
     public interface IButtonStepHelper : IStepHelper
     {
+        string Hello();
     }
 }

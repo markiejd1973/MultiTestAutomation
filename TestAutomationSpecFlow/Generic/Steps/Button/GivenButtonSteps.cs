@@ -10,6 +10,7 @@ namespace Generic.Steps.Button
         [Given(@"Button ""([^""]*)"" Is Disabled")]
         public void GivenButtonIsDisabled(string x)
         {
+            
             throw new PendingStepException();
         }
 
