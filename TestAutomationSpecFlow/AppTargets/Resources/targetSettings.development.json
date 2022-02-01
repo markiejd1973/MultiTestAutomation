@@ -1,8 +1,9 @@
 ﻿{
-  "ApplicationType": "windows",
+  "ApplicationType": "web",
+  "Browser" :  "chrome",
   "StartUrlx": "http://localhost:4200",
-  "StartUrl": "C:\\Program Files\\IP2021\\IntPetro.exe",
-  "ApiUrl": "http://localhost:5000",
+  "StartUrl": "https://demoqa.com/",
+  "ApiUrl": "https://demoqa.com/",
   "PositiveTimeout": 15,
   "NegativeTimeout": 2,
   "DateFormat": "UK",

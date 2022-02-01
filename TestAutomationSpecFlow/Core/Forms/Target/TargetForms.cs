@@ -71,7 +71,7 @@ namespace Core
 			var q = assembly.GetTypes()
 				.Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(FormBase)))
 				.ToList();
-			DebugOutput.Log($"We have {q.Count} things!");
+			DebugOutput.Log($"We have {q.Count} Forms Loaded!");
 			foreach (var type in q)
 			{
 				var f = Activator.CreateInstance(type) as FormBase;

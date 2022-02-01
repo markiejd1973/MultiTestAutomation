@@ -18,6 +18,7 @@ namespace Core.Configuration
         public class TargetConfigurationData
         {
             public string ApplicationType { get; set; } = "none";
+            public string Browser { get; set; }
             public string StartUrlx { get; set; } = "none";
             public string StartUrl { get; set; } = "none";
             public string ApiUrl { get; set; } = "none";

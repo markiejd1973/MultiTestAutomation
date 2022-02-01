@@ -6,12 +6,16 @@ using Core.Logging;
 using System.Reflection;
 using Generic.Steps.Helpers.Interfaces;
 using Generic.Steps.Helpers.Classes;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace AppSpecFlow.Libs
 {
     [Binding]
     public class Hooks
     {
+        public static IWebDriver? driver;
 
         [BeforeTestRun]
         public static void TestSetup()
@@ -19,15 +23,37 @@ namespace AppSpecFlow.Libs
             var assembly = Assembly.Load("AppTargets");
             TargetForms.Instance.PopulateList(assembly);
             TargetConfiguration.ReadJson();
-            DebugOutput.Log($"In hooks > {TargetConfiguration.Configuration.ApplicationType}");
-            DebugOutput.Log($"Want First Page to be > {TargetConfiguration.Configuration.FirstPage}");
+
+            DebugOutput.Log($"Application Type = {TargetConfiguration.Configuration.ApplicationType}");
+            if (TargetConfiguration.Configuration.ApplicationType.ToLower() == "web")
+            {
+                DebugOutput.Log($"Web based testing");
+                DebugOutput.Log($"Application First Page Name = {TargetConfiguration.Configuration.FirstPage}");
+                if (TargetConfiguration.Configuration.Browser.ToLower() == "chrome")
+                {
+                    driver = new ChromeDriver("c:\\chromedriver\\");
+                }
+                if (TargetConfiguration.Configuration.Browser.ToLower() == "firefox")
+                {
+                    driver = new FirefoxDriver("c:\\chromedriver\\");
+                }
+                if (driver == null)
+                {
+                    DebugOutput.Log($"Failure here due to NO DRIVER");
+                    Assert.Fail("Failed no driver");
+                    return;
+                }    
+                SeleniumUtil.webDriver = driver;
+                DebugOutput.Log($"App started - navigate to StartURL {TargetConfiguration.Configuration.StartUrl}");
+                driver.Url = $"{TargetConfiguration.Configuration.StartUrl}";
+            }
         }
 
 
         [AfterTestRun]
         public static void TestCleanUp()
         {
-
+            driver.Close();
         }
 
         [BeforeFeature]
