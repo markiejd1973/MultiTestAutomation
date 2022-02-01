@@ -6,3 +6,11 @@ Feature: AA000010-MenuTest
 Scenario Outline: AA000010-0000 START
 	Given Page "ToolsQA" Is Displayed
 	Then Accordion "accordian" Is Displayed
+	
+Scenario Outline: AA000010-0010 Click
+	When I Click "Elements" In Accordion "accordian"
+	Then Wait "2" Seconds
+	
+Scenario Outline: AA000010-0020 Click
+	When I Click "Elements" In Accordion "accordian"
+	Then Wait "5" Seconds

@@ -10,7 +10,7 @@ namespace AppTargets.Forms
             // Add Elements
             Elements.Add("ID", By.XPath("//body/div[@id='app']/div[1]/div[1]/div[1]/div[1][contains(text(),'Elements')]"));
 
-            Elements.Add("accordian", By.XPath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]"));
+            Elements.Add("accordian", By.ClassName("accordion"));
 
             // Page Dictionary
             ElementXPath.Add("value", "definition");

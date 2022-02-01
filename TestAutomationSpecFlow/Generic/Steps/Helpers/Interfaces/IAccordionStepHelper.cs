@@ -8,6 +8,7 @@ namespace Generic.Steps.Helpers.Interfaces
 {
     public interface IAccordionStepHelper : IStepHelper
     {
+        bool ClickSubElement(string accordionName, string value);
         bool IsDisplayed(string accordionName);
     }
 }

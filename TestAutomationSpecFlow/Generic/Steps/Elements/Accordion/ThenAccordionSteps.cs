@@ -13,6 +13,8 @@ namespace Generic.Elements.Steps.Button
         {
         }
 
+
+
         [Then(@"Accordion ""([^""]*)"" Is Displayed")]
         public void ThenAccordionIsDisplayed(string accordionName)
         {

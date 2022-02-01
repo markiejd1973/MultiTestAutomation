@@ -18,9 +18,25 @@ namespace Generic.Steps.Helpers.Classes
         {
             DebugOutput.Log($"proc - IsDisplayed {accordionName}");
             accordionName = accordionName.ToLower();    
-            var pageElement = GetAccordionElement(accordionName);
-            if (pageElement == null) return false;
-            return pageElement.Displayed;
+            var accordionElement = GetAccordionElement(accordionName);
+            if (accordionElement == null) return false;
+            return accordionElement.Displayed;
+        }
+
+
+        public bool ClickSubElement(string accordionName, string value)
+        {
+            DebugOutput.Log($"proc - ClickSubElement {accordionName}");
+            accordionName = accordionName.ToLower();
+            var accordionElement = GetAccordionElement(accordionName);
+            if (accordionElement == null) return false;
+            var xPath = $"//div[contains(text(),'{value}')]/../div[2]/div[2]";
+            DebugOutput.Log(xPath);
+            var subElementLocator = By.XPath(xPath);
+            var subElement = SeleniumUtil.GetElementUnderElement(accordionElement, subElementLocator);
+            if (subElement == null) return false;
+            subElement.Click();
+            return true;
         }
 
         private IWebElement GetAccordionElement(string elementName)

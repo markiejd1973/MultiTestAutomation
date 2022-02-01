@@ -12,6 +12,14 @@ namespace Generic.Steps
         {
         }
 
+        [Then(@"Wait ""([^""]*)"" Seconds")]
+        public void ThenWaitSeconds(string secondsText)
+        {
+            var seconds = int.Parse(secondsText);
+            seconds *= 1000;
+            Thread.Sleep(seconds);
+        }
+
 
     }
 }
