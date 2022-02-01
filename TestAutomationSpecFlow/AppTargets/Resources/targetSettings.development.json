@@ -1,8 +1,8 @@
 ﻿{
   "ApplicationType": "web",
-  "Browser" :  "chrome",
+  "Browser": "chrome",
   "StartUrlx": "http://localhost:4200",
-  "StartUrl": "https://demoqa.com/",
+  "StartUrl": "https://demoqa.com/elements",
   "ApiUrl": "https://demoqa.com/",
   "PositiveTimeout": 15,
   "NegativeTimeout": 2,

@@ -18,7 +18,7 @@ namespace Core.Configuration
         public class TargetConfigurationData
         {
             public string ApplicationType { get; set; } = "none";
-            public string Browser { get; set; }
+            public string Browser { get; set; } = "none";
             public string StartUrlx { get; set; } = "none";
             public string StartUrl { get; set; } = "none";
             public string ApiUrl { get; set; } = "none";
@@ -32,7 +32,7 @@ namespace Core.Configuration
             public string InstallLocation { get; set; } = "none";
             public int TimeoutMultiplie { get; set; }
             public bool SkipOnFailure { get; set; }
-            public string FirstPage { get; set; }
+            public string FirstPage { get; set; } = "none";
         }
 
         //public static void TargetConfiguration()

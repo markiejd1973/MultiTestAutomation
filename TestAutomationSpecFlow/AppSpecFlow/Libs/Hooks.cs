@@ -31,7 +31,7 @@ namespace AppSpecFlow.Libs
                 DebugOutput.Log($"Application First Page Name = {TargetConfiguration.Configuration.FirstPage}");
                 if (TargetConfiguration.Configuration.Browser.ToLower() == "chrome")
                 {
-                    driver = new ChromeDriver("c:\\chromedriver\\");
+                    ChromeDriver();
                 }
                 if (TargetConfiguration.Configuration.Browser.ToLower() == "firefox")
                 {
@@ -47,6 +47,11 @@ namespace AppSpecFlow.Libs
                 DebugOutput.Log($"App started - navigate to StartURL {TargetConfiguration.Configuration.StartUrl}");
                 driver.Url = $"{TargetConfiguration.Configuration.StartUrl}";
             }
+        }
+
+        private static void ChromeDriver()
+        {
+            driver = new ChromeDriver("c:\\chromedriver\\");
         }
 
 

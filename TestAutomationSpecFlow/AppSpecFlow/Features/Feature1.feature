@@ -4,4 +4,5 @@ Feature: AA000010-MenuTest
 
 
 Scenario Outline: AA000010-0000 START
-	Given Button "X" Is Disabled
+	Given Page "ToolsQA" Is Displayed
+	Then Accordion "accordian" Is Displayed

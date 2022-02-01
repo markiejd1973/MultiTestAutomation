@@ -22,11 +22,18 @@ namespace Generic.Steps.Helpers.Classes
             InitializeHelpers();
         }
 
+        /// <summary>
+        /// Add new ElementStepHelper.cs needs to populate BELOW
+        /// </summary>
+        public IAccordionStepHelper Accordion { get; private set; }
         public IButtonStepHelper Button { get; private set; }   
+        public IPageStepHelper Page { get; private set; }
 
         private void InitializeHelpers()
         {
+            Accordion = new AccordionStepHelper(featureContext, targetForms);
             Button = new ButtonStepHelper(featureContext, targetForms);
+            Page = new PageStepHelper(featureContext, targetForms);
         }
 
     }
