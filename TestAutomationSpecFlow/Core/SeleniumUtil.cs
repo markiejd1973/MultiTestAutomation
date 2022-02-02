@@ -17,27 +17,44 @@ namespace Core
 
         public static IWebElement GetElement(By locator, int timeout = 0)
         {
-            if (timeout < 1)
+            try
             {
-                timeout = TargetConfiguration.Configuration.PositiveTimeout;
-                DebugOutput.Log($"Using default POSITIVE TIMEOUT {timeout}");
-                var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
-                return wait.Until(drv => drv.FindElement(locator));
+                if (timeout < 1)
+                {
+                    timeout = TargetConfiguration.Configuration.PositiveTimeout;
+                    DebugOutput.Log($"Using default POSITIVE TIMEOUT {timeout}");
+                    var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
+                    return wait.Until(drv => drv.FindElement(locator));
+                }
+                DebugOutput.Log($"Using zero timeout");
+                return webDriver.FindElement(locator);
             }
-            DebugOutput.Log($"Using zero timeout");
-            return webDriver.FindElement(locator);
+            catch
+            {
+                DebugOutput.Log("FAILED GET ELEMENT");
+                return null;
+            }
         }
 
         public static IWebElement GetElementUnderElement(IWebElement parentElement, By locator, int timeout = 0)
         {
-            if (timeout < 1)
+            try
             {
-                timeout = TargetConfiguration.Configuration.PositiveTimeout;
-                var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
-                return wait.Until(driv => parentElement.FindElement(locator));
+                if (timeout < 1)
+                {
+                    timeout = TargetConfiguration.Configuration.PositiveTimeout;
+                    var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
+                    return wait.Until(driv => parentElement.FindElement(locator));
+                }
+                DebugOutput.Log($"Using zero timeout");
+                return parentElement.FindElement(locator);
             }
-            DebugOutput.Log($"Using zero timeout");
-            return parentElement.FindElement(locator);
+            catch
+            {
+                DebugOutput.Log("FAILED GET ELEMENT");
+                return null;
+            }
         }
+
     }
 }

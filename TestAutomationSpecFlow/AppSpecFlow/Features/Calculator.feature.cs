@@ -134,9 +134,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 13
  testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 14
- testRunner.Then("I Am Here", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
             }
             this.ScenarioCleanup();
         }

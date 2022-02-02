@@ -13,6 +13,30 @@ namespace Generic.Elements.Steps.Button
         {
         }
 
+        [Then(@"""([^""]*)"" In Accordion ""([^""]*)"" Is Expanded")]
+        public void ThenInAccordionIsExpanded(string value, string accordianName)
+        {
+            if (!Helpers.Accordion.IsElementExtended(accordianName, value))
+            {
+                DebugOutput.Log($"Is not expanded!");
+                Assert.Fail("failed here!");
+                return;
+            }
+            DebugOutput.Log($"{value} is EXPANDED");
+        }
+
+        [Then(@"""([^""]*)"" In Accordion ""([^""]*)"" Is Not Expanded")]
+        public void ThenInAccordionIsNotExpanded(string value, string accordianName)
+        {
+            if (!Helpers.Accordion.IsElementNotExtended(accordianName, value))
+            {
+                DebugOutput.Log($"Is not expanded!");
+                Assert.Fail("failed here!");
+                return;
+            }
+            DebugOutput.Log($"{value} is EXPANDED");
+        }
+
 
 
         [Then(@"Accordion ""([^""]*)"" Is Displayed")]
@@ -22,6 +46,7 @@ namespace Generic.Elements.Steps.Button
             {
                 DebugOutput.Log($"failed");
                 Assert.Fail("failed here!");
+                return;
             }
             DebugOutput.Log($"{accordionName} isDisplayed");    
         }

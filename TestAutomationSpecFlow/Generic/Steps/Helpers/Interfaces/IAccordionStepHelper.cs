@@ -10,5 +10,7 @@ namespace Generic.Steps.Helpers.Interfaces
     {
         bool ClickSubElement(string accordionName, string value);
         bool IsDisplayed(string accordionName);
+        bool IsElementExtended(string accordionName, string value);
+        bool IsElementNotExtended(string accordionName, string value);
     }
 }
