@@ -4,7 +4,7 @@ using Generic.Steps.Helpers.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
-namespace Generic.Elements.Steps.Button
+namespace Generic.Elements.Steps.Accordion
 {
     [Binding]
     public class WhenAccordionSteps : StepsBase
@@ -13,16 +13,40 @@ namespace Generic.Elements.Steps.Button
         {
         }
 
-        [When(@"I Click ""([^""]*)"" In Accordion ""([^""]*)""")]
-        public void WhenIClickInAccordion(string subElement, string accordion )
+        [When(@"I Click Group ""([^""]*)"" In Accordion ""([^""]*)""")]
+        public void WhenIClickGroupInAccordion(string groupName, string accordianName)
         {
-            if (!Helpers.Accordion.ClickSubElement(accordion, subElement))
+            string proc = $"When I Click Group {groupName} In Accordion {accordianName}";
+            if (CombinedSteps.OuputProc(proc))
             {
-                DebugOutput.Log($"failed to click!");
-                Assert.Fail("HER");
+                if (Helpers.Accordion.GroupClick(accordianName, groupName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
                 return;
             }
+            Assert.Inconclusive();
         }
+
+        [When(@"I Click Button ""([^""]*)"" In Accordion ""([^""]*)""")]
+        public void WhenIClickButtonInAccordion(string buttonName, string accordianName)
+        {
+            string proc = $"When I Click Button {buttonName} In Accordion {accordianName}";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Accordion.ButtonClick(accordianName, buttonName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+
+
 
 
     }

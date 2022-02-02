@@ -2,8 +2,6 @@
 using Core.Configuration;
 using Core.Logging;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
@@ -15,8 +13,29 @@ namespace Core
         public static string outputFolder = @"..\..\..\TestOutput\";
         public static string compareFolder = @"..\..\..\TestCompare\";
 
+        public static bool Click(IWebElement element)
+        {
+            DebugOutput.Log($"Click {element}");
+
+            try
+            {
+                Actions action = new Actions(webDriver);
+                action.MoveToElement(element);
+                action.Click();
+                action.Build();
+                action.Perform();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Log($"Failed to click {element} {ex}");
+                return false;   
+            }
+        }
+
         public static IWebElement GetElement(By locator, int timeout = 0)
         {
+            DebugOutput.Log($"GetElement {locator} {timeout}");
             try
             {
                 if (timeout < 1)
@@ -26,7 +45,7 @@ namespace Core
                     var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
                     return wait.Until(drv => drv.FindElement(locator));
                 }
-                DebugOutput.Log($"Using zero timeout");
+                DebugOutput.Log($"Instant Check");
                 return webDriver.FindElement(locator);
             }
             catch
@@ -38,6 +57,7 @@ namespace Core
 
         public static IWebElement GetElementUnderElement(IWebElement parentElement, By locator, int timeout = 0)
         {
+            DebugOutput.Log($"GetElementUnderElement {parentElement} {locator} {timeout}");
             try
             {
                 if (timeout < 1)
@@ -46,7 +66,7 @@ namespace Core
                     var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
                     return wait.Until(driv => parentElement.FindElement(locator));
                 }
-                DebugOutput.Log($"Using zero timeout");
+                DebugOutput.Log($"Instant Check");
                 return parentElement.FindElement(locator);
             }
             catch

@@ -4,7 +4,7 @@ using Generic.Steps.Helpers.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
-namespace Generic.Elements.Steps.Button
+namespace Generic.Elements.Steps.Accordion
 {
     [Binding]
     public class ThenAccordionSteps : StepsBase
@@ -13,43 +13,72 @@ namespace Generic.Elements.Steps.Button
         {
         }
 
-        [Then(@"""([^""]*)"" In Accordion ""([^""]*)"" Is Expanded")]
-        public void ThenInAccordionIsExpanded(string value, string accordianName)
-        {
-            if (!Helpers.Accordion.IsElementExtended(accordianName, value))
-            {
-                DebugOutput.Log($"Is not expanded!");
-                Assert.Fail("failed here!");
-                return;
-            }
-            DebugOutput.Log($"{value} is EXPANDED");
-        }
-
-        [Then(@"""([^""]*)"" In Accordion ""([^""]*)"" Is Not Expanded")]
-        public void ThenInAccordionIsNotExpanded(string value, string accordianName)
-        {
-            if (!Helpers.Accordion.IsElementNotExtended(accordianName, value))
-            {
-                DebugOutput.Log($"Is not expanded!");
-                Assert.Fail("failed here!");
-                return;
-            }
-            DebugOutput.Log($"{value} is EXPANDED");
-        }
-
-
-
         [Then(@"Accordion ""([^""]*)"" Is Displayed")]
-        public void ThenAccordionIsDisplayed(string accordionName)
+        public void ThenAccordionIsDisplayed(string accordianName)
         {
-            if (!Helpers.Accordion.IsDisplayed(accordionName))
+            string proc = $"Then Accordion {accordianName} Is Displayed";
+            if (CombinedSteps.OuputProc(proc))
             {
-                DebugOutput.Log($"failed");
-                Assert.Fail("failed here!");
+                if (Helpers.Accordion.IsDisplayed(accordianName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
                 return;
             }
-            DebugOutput.Log($"{accordionName} isDisplayed");    
+            Assert.Inconclusive();
         }
+
+        [Then(@"Group ""([^""]*)"" In Accordion ""([^""]*)"" Is Expanded")]
+        public void ThenGroupInAccordionIsExpanded(string groupName, string accordianName)
+        {
+            string proc = $"Then Group {groupName} In Accordion {accordianName} Is Displayed";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Accordion.GroupIsExpanded(accordianName, groupName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+        [Then(@"Group ""([^""]*)"" In Accordion ""([^""]*)"" Is Not Expanded")]
+        public void ThenGroupInAccordionIsNotExpanded(string groupName, string accordianName)
+        {
+            string proc = $"Then Group {groupName} In Accordion {accordianName} Is Displayed";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Accordion.GroupIsNotExpanded(accordianName, groupName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+        [Then(@"Button ""([^""]*)"" In Accordion ""([^""]*)"" Displayed")]
+        public void ThenButtonInAccordionDisplayed(string buttonName, string accordianName)
+        {
+            string proc = $"Then Button {buttonName} In Accordion {accordianName} Is Displayed";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Accordion.IsButtonDisplayed(accordianName, buttonName))    
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+
+
 
     }
 }

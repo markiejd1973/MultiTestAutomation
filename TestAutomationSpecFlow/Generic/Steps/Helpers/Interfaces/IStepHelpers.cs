@@ -11,5 +11,6 @@ namespace Generic.Steps.Helpers.Interfaces
         IAccordionStepHelper Accordion { get; } 
         IButtonStepHelper Button { get; }   
         IPageStepHelper Page { get; }
+        ITextBoxStepHelper TextBox { get; }
     }
 }

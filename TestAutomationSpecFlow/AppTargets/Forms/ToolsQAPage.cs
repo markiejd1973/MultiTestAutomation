@@ -12,6 +12,13 @@ namespace AppTargets.Forms
 
             Elements.Add("accordian", By.ClassName("accordion"));
 
+            //Text Box
+            Elements.Add("full name", By.Id("userName"));
+            Elements.Add("email", By.Id("userEmail"));
+            Elements.Add("current address", By.Id("currentAddress"));
+            Elements.Add("permanent address", By.Id("permanentAddress"));
+
+
             // Page Dictionary
             ElementXPath.Add("value", "definition");
         }

@@ -14,107 +14,132 @@ namespace Generic.Steps.Helpers.Classes
             this.targetForms = targetForms;
         }
 
-        int subElementNumber = 0; //first is zero
+        int versionNumber = 0; //first is zero
         /// <summary>
         /// From the Accordion Element!
         /// </summary>
-        readonly string[] subElementXPathStart = { "//div[contains(text(),'" };
-        readonly string[] subElementXPathEnd = { "')]" };
+        /// Find accordion elment from Page.cs
+        /// 
+        readonly string[] subElementXPathStart = { $"//div[contains(text(),'" }; //group
+        readonly string[] subElementXPathEnd = { $"')]/../../../span[1]/div[1]" }; //group
+        readonly string[] subElementExpanded = { $"./../../*[@class='element-list collapse show']" }; //element-list collapse (show)
+        readonly string[] subElementButtonsStart = { $"//span[contains(text(),'" }; //Buttons
+        readonly string[] subElementButtonsEnd = { $"')]" }; //Buttons
+
+
         readonly string[] subElementXPathClick = { "/../div[2]/div[2]" };
         readonly string[] subListShow = { "//div[contains(@class, 'element-list collapse show')]" };
 
         public bool IsDisplayed(string accordionName)
         {
-            DebugOutput.Log($"proc - IsDisplayed {accordionName}");
-            accordionName = accordionName.ToLower();    
+            DebugOutput.Log($"IsDisplayed {accordionName}");
             var accordionElement = GetAccordionElement(accordionName);
             if (accordionElement == null) return false;
             return accordionElement.Displayed;
         }
 
-        public bool IsElementDisplayed(string accordionName, string value)
+        public bool GroupIsDisplayed(string accordionName, string groupName)
         {
-            DebugOutput.Log($"proc - IsElementDisplayed {accordionName} {value}");
-            accordionName = accordionName.ToLower();
+            DebugOutput.Log($"GroupIsDisplayed {accordionName} {groupName}");
             var accordionElement = GetAccordionElement(accordionName);
             if (accordionElement == null) return false;
-            var subElement = GetAccordionSubElement(accordionElement, value);
-            if (subElement == null) return false;            
-            return subElement.Displayed;
+            var groupElement = GetGroupElement(accordionElement, groupName);
+            if (groupElement == null) return false;
+            return groupElement.Displayed;
         }
 
-        public bool ClickSubElement(string accordionName, string value)
+        public bool GroupIsExpanded(string accordionName, string groupName)
         {
-            DebugOutput.Log($"proc - ClickSubElement {accordionName} {value}");
-            accordionName = accordionName.ToLower();
-            var accordionElement = GetAccordionElement(accordionName);
-            var subElement = GetAccordionSubElement(accordionElement, value);
-            if (subElement == null) return false;
-            try
-            {
-                subElement.Click();
-                return true;
-            }
-            catch
-            {
-                DebugOutput.Log($"Failed to click on subElement {subElement}");
-                return false;
-            }
-        }
-
-        public bool IsElementExtended(string accordionName, string value)
-        {
-            DebugOutput.Log($"proc - IsElementExtended {accordionName} {value}");
-            accordionName = accordionName.ToLower();
+            DebugOutput.Log($"GroupIsExpanded {accordionName} {groupName}");
             var accordionElement = GetAccordionElement(accordionName);
             if (accordionElement == null) return false;
-            var subElement = GetAccordionSubElement(accordionElement, value);
-            if (subElement == null) return false;
-            var listShowElement = GetListShow(subElement);
-            if (listShowElement == null) return false;
+            var groupElement = GetGroupElement(accordionElement, groupName);
+            if (groupElement == null) return false;
+            var groupExpandedElement = GetGroupExpanded(groupElement);
+            if (groupExpandedElement == null) return false ;
             return true;
         }
-        public bool IsElementNotExtended(string accordionName, string value)
+
+        public bool GroupIsNotExpanded(string accordionName, string groupName)
         {
-            DebugOutput.Log($"proc - IsElementExtended {accordionName} {value}");
-            accordionName = accordionName.ToLower();
+            DebugOutput.Log($"GroupIsExpanded {accordionName} {groupName}");
             var accordionElement = GetAccordionElement(accordionName);
             if (accordionElement == null) return false;
-            var subElement = GetAccordionSubElement(accordionElement, value);
-            if (subElement == null) return false;
-            var listShowElement = GetListShow(subElement, 1);
-            if (listShowElement == null) return true;
+            var groupElement = GetGroupElement(accordionElement, groupName);
+            if (groupElement == null) return false;
+            var groupExpandedElement = GetGroupExpanded(groupElement);
+            if (groupExpandedElement == null) return true;
             return false;
         }
 
-        private IWebElement GetAccordionElement(string elementName)
+        public bool GroupClick(string accordionName, string groupName)
         {
-            DebugOutput.Log($"proc - GetAccordionElement from current page {elementName}");
-            var accordionLocator = CurrentPage.Elements[elementName];
-            DebugOutput.Log($"We have the LOCATOR {accordionLocator}");
-            return SeleniumUtil.GetElement(accordionLocator);
+            DebugOutput.Log($"GroupClick {accordionName} {groupName}");
+            var accordionElement = GetAccordionElement(accordionName);
+            if (accordionElement == null) return false;
+            var groupElement = GetGroupElement(accordionElement, groupName);
+            if (groupElement == null) return false;
+            return SeleniumUtil.Click(groupElement);
         }
 
-        private IWebElement GetAccordionSubElement(IWebElement accordionElement, string value)
+        public bool ButtonClick(string accordionName, string buttonName)
         {
-            var xPath = $"{subElementXPathStart[subElementNumber]}{value}{subElementXPathEnd[subElementNumber]}{subElementXPathClick[subElementNumber]}";
-            DebugOutput.Log(xPath);
-            var subElementLocator = By.XPath(xPath);
-            var subElement = SeleniumUtil.GetElementUnderElement(accordionElement, subElementLocator);
-            if (subElement == null) return null;
-            return subElement;
+            DebugOutput.Log($"GroupClick {accordionName} {buttonName}");
+            var accordionElement = GetAccordionElement(accordionName);
+            if (accordionElement == null) return false;
+            var buttonElement = GetButtonElement(accordionElement, buttonName);
+            return SeleniumUtil.Click(buttonElement);
         }
 
-        private IWebElement GetListShow(IWebElement subElement, int timeout = 0)
+        public bool IsButtonDisplayed(string accordionName, string buttonName)
         {
-            var xPath = $"{subListShow[0]}";
-            DebugOutput.Log(xPath);
-            var listLocator = By.XPath(xPath);
-            var listElement = SeleniumUtil.GetElementUnderElement(subElement, listLocator, timeout);
-            if (listElement == null) return null;
-            return listElement;
+            DebugOutput.Log($"IsButtonDisplayed {accordionName} {buttonName}");
+            var accordionElement = GetAccordionElement(accordionName);
+            if (accordionElement == null) return false;
+            var buttonElement = GetButtonElement(accordionElement, buttonName);
+            if (buttonElement == null) return false;
+            return buttonElement.Displayed;
         }
 
+        private IWebElement GetButtonElement(IWebElement accordionElement, string buttonName)
+        {
+            DebugOutput.Log($"GetButtonElement {accordionElement}");
+            var buttonXPath = subElementButtonsStart[versionNumber] + buttonName + subElementButtonsEnd[versionNumber];
+            var buttonLocator = By.XPath(buttonXPath); 
+            var element = SeleniumUtil.GetElementUnderElement(accordionElement, buttonLocator);
+            DebugOutput.Log($"button name {buttonName} = {element}");
+            return element;
+        }
+
+        private IWebElement GetGroupExpanded(IWebElement groupElement)
+        {
+            DebugOutput.Log($"GetGroupExpanded {groupElement}");
+            var groupExpandedXPath = subElementExpanded[versionNumber];
+            var groupExpandedLocator = By.XPath(groupExpandedXPath);
+            var element =  SeleniumUtil.GetElementUnderElement(groupElement, groupExpandedLocator, 1);
+            DebugOutput.Log($"Group Expanded = {element}");
+            return element;
+        }
+
+        private IWebElement GetGroupElement(IWebElement accordionElement, string groupName)
+        {
+            DebugOutput.Log($"GetGroupElement {accordionElement} {groupName}");
+            var groupXPath = subElementXPathStart[versionNumber] + groupName + subElementXPathEnd[versionNumber] ;
+            var groupLocator = By.XPath(groupXPath);
+            var element = SeleniumUtil.GetElementUnderElement(accordionElement, groupLocator);
+            DebugOutput.Log($"Group name {groupName} = {element} {groupXPath}");
+            return element;
+        }
+
+        private IWebElement GetAccordionElement(string accordionName)
+        {
+            DebugOutput.Log($"IsDisplayed {accordionName}");
+            var accordionLocator = CurrentPage.Elements[accordionName];
+            DebugOutput.Log($"We have the LOCATOR for Accordion {accordionName} {accordionLocator}");
+            var element =  SeleniumUtil.GetElement(accordionLocator);
+            DebugOutput.Log($"Accordion Element {accordionName} = {element}");
+            return element;
+        }
 
     }
 

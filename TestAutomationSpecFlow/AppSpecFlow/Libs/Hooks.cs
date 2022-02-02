@@ -83,7 +83,7 @@ namespace AppSpecFlow.Libs
         [AfterScenario]
         public void ScenarioCleanUp(ScenarioContext scenarioContext)
         {
-
+            DebugOutput.Log($" ");
         }
 
         [BeforeStep]
