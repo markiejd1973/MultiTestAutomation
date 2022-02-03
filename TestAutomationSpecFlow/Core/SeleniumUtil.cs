@@ -33,6 +33,60 @@ namespace Core
             }
         }
 
+        public static bool EnterText(IWebElement element, string text, string key = null)
+        {
+            DebugOutput.Log($"EnterText {element} {text} {key}");
+            try
+            {
+                element.SendKeys(text);
+                if (key == null) return true;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Log($"Failed to Enter Text {element} {text} {ex}");
+                return false;
+            }
+            return SendKey(element, key);           
+        }
+
+        private static bool SendKey(IWebElement element, string key)
+        {
+            DebugOutput.Log($"SendKey {element} {key}");
+            if (key == null) return false;
+            try
+            {
+                switch (key)
+                {
+                    default:
+                        {
+                            element.SendKeys(key);
+                            return true;
+                        }
+                    case "clear":
+                        {
+                            element.SendKeys(Keys.Control + "a");
+                            element.SendKeys(Keys.Delete);
+                            return true;
+                        }
+                    case "enter":
+                        {
+                            element.SendKeys(Keys.Return);
+                            return true;
+                        }
+                    case "tab":
+                        {
+                            element.SendKeys(Keys.Tab);
+                            return true;
+                        }
+                }
+            }
+            catch
+            {
+                DebugOutput.Log($"problem sending key!");
+                return false;
+            }
+        }
+
         public static IWebElement GetElement(By locator, int timeout = 0)
         {
             DebugOutput.Log($"GetElement {locator} {timeout}");
@@ -51,6 +105,22 @@ namespace Core
             catch
             {
                 DebugOutput.Log("FAILED GET ELEMENT");
+                return null;
+            }
+        }
+
+        public static string GetElementAttributeValue(IWebElement element, string attribute)
+        {
+            DebugOutput.Log($"GetElementAttributeValue {element} {attribute}");
+
+            if (string.IsNullOrEmpty(attribute)) return null;
+            try
+            {
+                return element.GetAttribute(attribute);
+            }
+            catch
+            {
+                DebugOutput.Log($"Failed to read attribute {attribute}");
                 return null;
             }
         }

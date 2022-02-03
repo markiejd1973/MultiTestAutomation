@@ -14,10 +14,53 @@ namespace Generic.Elements.Steps.TextBox
         }
 
         [Then(@"TextBox ""([^""]*)"" Is Displayed")]
-        public void GivenButtonIsDisplayed(string x)
+        public void GivenButtonIsDisplayed(string textBoxName)
         {
-            throw new PendingStepException();
+            string proc = $"Then TextBox {textBoxName} Is Displayed";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.TextBox.IsDisplayed(textBoxName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
         }
+
+        [Then(@"TextBox ""([^""]*)"" Is Equal To ""([^""]*)""")]
+        public void ThenTextBoxIsEqualTo(string textBoxName, string text)
+        {
+            string proc = $"Then TextBox {textBoxName} Is Equal To {text}";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.TextBox.GetText(textBoxName) == text)
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+        [Then(@"TextBox ""([^""]*)"" Is Not Equal To ""([^""]*)""")]
+        public void ThenTextBoxIsNotEqualTo(string textBoxName, string text)
+        {
+            string proc = $"Then TextBox {textBoxName} Is Not Equal To {text}";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.TextBox.GetText(textBoxName) != text)
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
 
     }
 }
