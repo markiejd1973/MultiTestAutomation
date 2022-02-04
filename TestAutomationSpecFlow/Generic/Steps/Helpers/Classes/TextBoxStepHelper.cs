@@ -19,9 +19,9 @@ namespace Generic.Steps.Helpers.Classes
             DebugOutput.Log($"GetText {textBoxName}");
             textBoxName = textBoxName.ToLower();
             var textBoxElement = GetTextBox(textBoxName);
-            if (textBoxElement == null) return null;
+            if (textBoxElement == null) return "";
             string text = GetTextFromElement(textBoxElement);
-            if (text == null) return null;
+            if (text == null) return "";
             DebugOutput.Log($"gotten {text} from textBox {textBoxName}");
             return text;
         }
@@ -29,13 +29,7 @@ namespace Generic.Steps.Helpers.Classes
         private string GetTextFromElement(IWebElement textBoxElement)
         {
             DebugOutput.Log($"GetTextFromElement {textBoxElement}");
-            DebugOutput.Log($"Text");
-            //if (string.IsNullOrEmpty(textBoxElement.Text)) return textBoxElement.Text;
-            if (SeleniumUtil.GetElementAttributeValue(textBoxElement, "text") != null) return SeleniumUtil.GetElementAttributeValue(textBoxElement, "text");
-            DebugOutput.Log($"Attribute Value");
-            if (SeleniumUtil.GetElementAttributeValue(textBoxElement, "value") != null) return SeleniumUtil.GetElementAttributeValue(textBoxElement, "value");
-            DebugOutput.Log($"Failed to get any text from {textBoxElement}");
-            return null;
+            return SeleniumUtil.GetElementText(textBoxElement);
         }
 
         public bool ClearThenEnterText(string textBoxName, string text)
@@ -49,7 +43,7 @@ namespace Generic.Steps.Helpers.Classes
             return true;
         }
 
-        public bool EnterText(string textBoxName, string text, string key = null)
+        public bool EnterText(string textBoxName, string text, string key = "")
         {
             DebugOutput.Log($"EnterText {textBoxName} {text} {key}");
             textBoxName = textBoxName.ToLower();

@@ -29,6 +29,7 @@ namespace Generic.Steps.Helpers.Classes
         public IButtonStepHelper Button { get; private set; }   
         public IPageStepHelper Page { get; private set; }
         public ITextBoxStepHelper TextBox { get; private set; }
+        public ITreeStepHelper Tree { get; private set; }   
 
         private void InitializeHelpers()
         {
@@ -36,6 +37,7 @@ namespace Generic.Steps.Helpers.Classes
             Button = new ButtonStepHelper(featureContext, targetForms);
             Page = new PageStepHelper(featureContext, targetForms);
             TextBox = new TextBoxStepHelper(featureContext, targetForms);
+            Tree = new TreeStepHelper(featureContext, targetForms);
         }
 
     }

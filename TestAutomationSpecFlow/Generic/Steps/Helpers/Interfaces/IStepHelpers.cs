@@ -12,5 +12,6 @@ namespace Generic.Steps.Helpers.Interfaces
         IButtonStepHelper Button { get; }   
         IPageStepHelper Page { get; }
         ITextBoxStepHelper TextBox { get; }
+        ITreeStepHelper Tree { get; }
     }
 }

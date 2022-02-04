@@ -12,10 +12,10 @@ namespace Core
         public static IWebDriver? webDriver ;
         public static string outputFolder = @"..\..\..\TestOutput\";
         public static string compareFolder = @"..\..\..\TestCompare\";
-
+        public static string failedFindElement = "Failed to find element!";
         public static bool Click(IWebElement element)
         {
-            DebugOutput.Log($"Click {element}");
+            DebugOutput.Log($"Sel - Click {element}");
 
             try
             {
@@ -33,13 +33,13 @@ namespace Core
             }
         }
 
-        public static bool EnterText(IWebElement element, string text, string key = null)
+        public static bool EnterText(IWebElement element, string text, string key = "")
         {
-            DebugOutput.Log($"EnterText {element} {text} {key}");
+            DebugOutput.Log($"Sel - EnterText {element} {text} {key}");
             try
             {
                 element.SendKeys(text);
-                if (key == null) return true;
+                if (string.IsNullOrEmpty(key)) return true;
             }
             catch (Exception ex)
             {
@@ -51,8 +51,8 @@ namespace Core
 
         private static bool SendKey(IWebElement element, string key)
         {
-            DebugOutput.Log($"SendKey {element} {key}");
-            if (key == null) return false;
+            DebugOutput.Log($"Sel - SendKey {element} {key}");
+            if (string.IsNullOrEmpty(key)) return false;
             try
             {
                 switch (key)
@@ -89,7 +89,7 @@ namespace Core
 
         public static IWebElement GetElement(By locator, int timeout = 0)
         {
-            DebugOutput.Log($"GetElement {locator} {timeout}");
+            DebugOutput.Log($"Sel - GetElement {locator} {timeout}");
             try
             {
                 if (timeout < 1)
@@ -109,25 +109,75 @@ namespace Core
             }
         }
 
-        public static string GetElementAttributeValue(IWebElement element, string attribute)
+        public static List<IWebElement> GetElements(By locator, int timeout = 0)
         {
-            DebugOutput.Log($"GetElementAttributeValue {element} {attribute}");
-
-            if (string.IsNullOrEmpty(attribute)) return null;
+            DebugOutput.Log($"Sel - GetElements (plural) {locator} {timeout}");
+            var elementList = new List<IWebElement>();
             try
             {
+                if (timeout < 1)
+                {
+                    timeout = TargetConfiguration.Configuration.PositiveTimeout;
+                    DebugOutput.Log($"Using default POSITIVE TIMEOUT {timeout}");
+                    var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
+                    var elements =  wait.Until(drv => drv.FindElements(locator));
+                    foreach (var element in elements)
+                    {
+                        elementList.Add(element);
+                    }
+                    DebugOutput.Log($"We have {elementList.Count} elements found");
+                    return elementList;
+                }
+                DebugOutput.Log($"Instant Check");
+                var elementsQuick =  webDriver.FindElements(locator);
+                foreach (var element in elementsQuick)
+                {
+                    elementList.Add(element);
+                }
+                DebugOutput.Log($"We have {elementList.Count} elements found");
+                return elementList;
+            }
+            catch
+            {
+                DebugOutput.Log("FAILED GET ELEMENTSSSS");
+                return elementList;
+            }
+        }
+
+        public static string GetElementText(IWebElement element)
+        {
+            DebugOutput.Log($"Sel - GetElementText {element} ");
+            if (element == null) return failedFindElement;
+            DebugOutput.Log($"Attribute Text");
+            if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "text"))) return SeleniumUtil.GetElementAttributeValue(element, "text");
+            DebugOutput.Log($"Attribute Value");
+            if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "value"))) return SeleniumUtil.GetElementAttributeValue(element, "value");
+            DebugOutput.Log($"Failed to get any text from {element}"); 
+            DebugOutput.Log($"Attribute textContent");
+            if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "textContent"))) return SeleniumUtil.GetElementAttributeValue(element, "textContent");
+            return "";
+        }
+
+        public static string GetElementAttributeValue(IWebElement element, string attribute)
+        {
+            DebugOutput.Log($"Sel - GetElementAttributeValue {element} {attribute}");
+
+            if (string.IsNullOrEmpty(attribute)) return "";
+            try
+            {
+                DebugOutput.Log($"attribute {attribute} = {element.GetAttribute(attribute)}");
                 return element.GetAttribute(attribute);
             }
             catch
             {
                 DebugOutput.Log($"Failed to read attribute {attribute}");
-                return null;
+                return "";
             }
         }
 
         public static IWebElement GetElementUnderElement(IWebElement parentElement, By locator, int timeout = 0)
         {
-            DebugOutput.Log($"GetElementUnderElement {parentElement} {locator} {timeout}");
+            DebugOutput.Log($"Sel - GetElementUnderElement {parentElement} {locator} {timeout}");
             try
             {
                 if (timeout < 1)
@@ -141,7 +191,7 @@ namespace Core
             }
             catch
             {
-                DebugOutput.Log("FAILED GET ELEMENT");
+                DebugOutput.Log(failedFindElement);
                 return null;
             }
         }
