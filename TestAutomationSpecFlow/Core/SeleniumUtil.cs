@@ -13,6 +13,7 @@ namespace Core
         public static string outputFolder = @"..\..\..\TestOutput\";
         public static string compareFolder = @"..\..\..\TestCompare\";
         public static string failedFindElement = "Failed to find element!";
+
         public static bool Click(IWebElement element)
         {
             DebugOutput.Log($"Sel - Click {element}");
@@ -30,6 +31,46 @@ namespace Core
             {
                 DebugOutput.Log($"Failed to click {element} {ex}");
                 return false;   
+            }
+        }
+
+        public static bool DoubleClick(IWebElement element)
+        {
+            DebugOutput.Log($"Sel - Click {element}");
+
+            try
+            {
+                Actions action = new Actions(webDriver);
+                action.MoveToElement(element);
+                action.DoubleClick();
+                action.Build();
+                action.Perform();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Log($"Failed to click {element} {ex}");
+                return false;
+            }
+        }
+
+        public static bool RightClick(IWebElement element)
+        {
+            DebugOutput.Log($"Sel - Click {element}");
+
+            try
+            {
+                Actions action = new Actions(webDriver);
+                action.MoveToElement(element);
+                action.ContextClick();
+                action.Build();
+                action.Perform();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Log($"Failed to click {element} {ex}");
+                return false;
             }
         }
 
@@ -134,8 +175,8 @@ namespace Core
                 DebugOutput.Log($"Had a failed returning elements Selected flag! {ex}");
                 return false;
             }
-
         }
+
 
         public static IWebElement GetElement(By locator, int timeout = 0)
         {

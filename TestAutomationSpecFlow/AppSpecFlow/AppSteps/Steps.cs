@@ -15,14 +15,6 @@ namespace AppSpecFlow.AppSteps
         }
 
 
-        [Then(@"I Am Here")]
-        public void ThenIAmHere()
-        {
-            DebugOutput.Log($"ThenIAmHere >>>>>>>>>>>>");
-            DebugOutput.Log(TargetConfiguration.Configuration.ApplicationType);
-            Helpers.Button.Hello();
-        }
-
         [Given(@"the first number is (.*)")]
         public void GivenTheFirstNumberIs(int p0)
         {

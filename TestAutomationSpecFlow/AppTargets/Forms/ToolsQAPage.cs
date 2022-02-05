@@ -22,10 +22,16 @@ namespace AppTargets.Forms
             //Tree
             Elements.Add("checkbox tree", By.Id("tree-node"));
 
-            //Radio Button
+            //RadioButton
             Elements.Add("yes radiobutton", By.Id("yesRadio"));
             Elements.Add("impressive radiobutton", By.Id("impressiveRadio"));
             Elements.Add("no radiobutton", By.Id("noRadio"));
+
+            //Button
+            Elements.Add("double click me button", By.Id("doubleClickBtn"));
+            Elements.Add("right click me button", By.Id("rightClickBtn"));
+            Elements.Add("click me button", By.XPath("//div[3]/button[1]"));
+
 
 
             // Page Dictionary

@@ -148,18 +148,18 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-0300 Radio Button")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-0400 Buttons")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AA000010-MenuTest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("all")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Pipeline1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("pipeline2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AA000010")]
-        public virtual void AA000010_0300RadioButton()
+        public virtual void AA000010_0400Buttons()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-0300 Radio Button", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 84
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-0400 Buttons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 100
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -179,35 +179,35 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 85
- testRunner.When("I Click Button \"Radio Button\" In Accordion \"accordian\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 101
+ testRunner.When("I Click Button \"Buttons\" In Accordion \"accordian\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 86
- testRunner.Then("RadioButton \"Yes\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 102
+ testRunner.Then("Button \"Double Click Me\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 87
- testRunner.Then("RadioButton \"Impressive\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 103
+ testRunner.Then("Button \"Right Click Me\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 88
- testRunner.Then("RadioButton \"No\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 104
+ testRunner.Then("Button \"Click Me\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-0310 Radio Button Read Only")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-0410 Click Me")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AA000010-MenuTest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("all")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Pipeline1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("pipeline2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AA000010")]
-        public virtual void AA000010_0310RadioButtonReadOnly()
+        public virtual void AA000010_0410ClickMe()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-0310 Radio Button Read Only", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 90
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-0410 Click Me", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 106
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -227,32 +227,29 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 91
- testRunner.Then("RadioButton \"No\" Is Read Only", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 107
+ testRunner.When("I Click On Button \"Click Me\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 92
- testRunner.Then("RadioButton \"Yes\" Is Enabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 93
- testRunner.Then("RadioButton \"Yes\" Is Not Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 108
+ testRunner.Then("Page Displays Message \"You have done a dynamic click\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-030 Select The Other")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-0420 Double Click Me")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AA000010-MenuTest")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("all")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Pipeline1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("pipeline2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AA000010")]
-        public virtual void AA000010_030SelectTheOther()
+        public virtual void AA000010_0420DoubleClickMe()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-030 Select The Other", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 95
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-0420 Double Click Me", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 110
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -272,14 +269,53 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 96
- testRunner.When("I Click On RadioButton \"Impressive\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 111
+ testRunner.When("I Double Click On Button \"Double Click Me\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 97
- testRunner.Then("RadioButton \"Impressive\" Is Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 112
+ testRunner.Then("Page Displays Message \"You have done a double click\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 98
- testRunner.Then("RadioButton \"Yes\" Is Not Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-0430 Right Click Me")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AA000010-MenuTest")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("all")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Pipeline1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("pipeline2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AA000010")]
+        public virtual void AA000010_0430RightClickMe()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-0430 Right Click Me", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 114
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 115
+ testRunner.When("I Right Click On Button \"Right Click Me\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 116
+ testRunner.Then("Page Displays Message \"You have done a dynamic click\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

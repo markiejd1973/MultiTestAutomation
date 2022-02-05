@@ -11,6 +11,7 @@ namespace Generic.Steps.Helpers.Interfaces
     {
         IWebElement GetPageElement(string pageName, string elementName);
         bool IsDisplayed(string pageName);
+        bool IsMessageDisplayed(string message);
         void SetCurrentPage(string pageName);
     }
 }

@@ -81,19 +81,36 @@ Scenario Outline: AA000010-0000 START
 #	When I Click Collapse All Tree "CheckBox"
 #	Then Tree "Checkbox" Has 1 Nodes Displayed
 	
-Scenario Outline: AA000010-0300 Radio Button
-	When I Click Button "Radio Button" In Accordion "accordian"
-	Then RadioButton "Yes" Is Displayed
-	Then RadioButton "Impressive" Is Displayed
-	Then RadioButton "No" Is Displayed
-	
-Scenario Outline: AA000010-0310 Radio Button Read Only
-	Then RadioButton "No" Is Read Only
-	Then RadioButton "Yes" Is Enabled
-	Then RadioButton "Yes" Is Not Selected
+#Scenario Outline: AA000010-0300 Radio Button
+#	When I Click Button "Radio Button" In Accordion "accordian"
+#	Then RadioButton "Yes" Is Displayed
+#	Then RadioButton "Impressive" Is Displayed
+#	Then RadioButton "No" Is Displayed
+#	
+#Scenario Outline: AA000010-0310 Radio Button Read Only
+#	Then RadioButton "No" Is Read Only
+#	Then RadioButton "Yes" Is Enabled
+#	Then RadioButton "Yes" Is Not Selected
+#
+#Scenario Outline: AA000010-0320 Select The Other
+#	When I Click On RadioButton "Impressive"
+#	Then RadioButton "Impressive" Is Selected
+#	Then RadioButton "Yes" Is Not Selected	
 
-Scenario Outline: AA000010-030 Select The Other
-	When I Click On RadioButton "Impressive"
-	Then RadioButton "Impressive" Is Selected
-	Then RadioButton "Yes" Is Not Selected
-	
+Scenario Outline: AA000010-0400 Buttons
+	When I Click Button "Buttons" In Accordion "accordian"
+	Then Button "Double Click Me" Is Displayed
+	Then Button "Right Click Me" Is Displayed
+	Then Button "Click Me" Is Displayed
+
+Scenario Outline: AA000010-0410 Click Me
+	When I Click On Button "Click Me"
+	Then Page Displays Message "You have done a dynamic click"
+
+Scenario Outline: AA000010-0420 Double Click Me
+	When I Double Click On Button "Double Click Me"
+	Then Page Displays Message "You have done a double click"
+
+Scenario Outline: AA000010-0430 Right Click Me
+	When I Right Click On Button "Right Click Me"
+	Then Page Displays Message "You have done a dynamic click"

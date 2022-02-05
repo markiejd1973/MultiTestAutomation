@@ -8,6 +8,10 @@ namespace Generic.Steps.Helpers.Interfaces
 {
     public interface IButtonStepHelper : IStepHelper
     {
-        string Hello();
+        bool ClickButton(string buttonName);
+        bool DoubleClick(string buttonName);
+        bool RightClick(string buttonName);
+        bool IsDisplayed(string buttonName);
+
     }
 }

@@ -69,13 +69,16 @@ namespace Generic.Steps.Helpers.Classes
             return textBoxElement.Displayed;    
         }
 
+
+        ///  PRIVATE
+
         private IWebElement GetTextBox(string textBoxName)
         {
             DebugOutput.Log($"GetTextBox {textBoxName}");
             var textBoxLocator = CurrentPage.Elements[textBoxName];
             DebugOutput.Log($"We have the LOCATOR for Accordion {textBoxName} {textBoxLocator}");
             var element = SeleniumUtil.GetElement(textBoxLocator);
-            DebugOutput.Log($"Accordion Element {textBoxName} = {element}");
+            DebugOutput.Log($"TextBox Element {textBoxName} = {element}");
             return element;
 
         }
