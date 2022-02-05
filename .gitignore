@@ -437,3 +437,13 @@ Training
 Blog
 About
 Loading complete
+
+
+# BDDTests
+TestAutomationSpecFlow/AppSpecFlow/TestOutput/*.csv
+TestAutomationSpecFlow/AppSpecFlow/TestOutput/*.png
+TestAutomationSpecFlow/AppSpecFlow/TestOutput/*.jpg
+TestAutomationSpecFlow/AppSpecFlow/TestOutput/*.xls
+TestAutomationSpecFlow/AppSpecFlow/TestOutput/*.xlsx
+TestAutomationSpecFlow/AppSpecFlow/Features/*.cs
+TestAutomationSpecFlow/AppSpecFlow/Features/*/*.cs
