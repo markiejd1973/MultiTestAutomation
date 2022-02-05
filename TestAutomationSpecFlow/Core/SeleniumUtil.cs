@@ -235,6 +235,41 @@ namespace Core
             }
         }
 
+        public static List<IWebElement> GetElementsUnder(IWebElement parent, By locator, int timeout = 0)
+        {
+            DebugOutput.Log($"Sel - GetElements (plural) {parent} {locator} {timeout}");
+            var elementList = new List<IWebElement>();
+            try
+            {
+                if (timeout < 1)
+                {
+                    timeout = TargetConfiguration.Configuration.PositiveTimeout;
+                    DebugOutput.Log($"Using default POSITIVE TIMEOUT {timeout}");
+                    var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
+                    var elements = wait.Until(drv => parent.FindElements(locator));
+                    foreach (var element in elements)
+                    {
+                        elementList.Add(element);
+                    }
+                    DebugOutput.Log($"We have {elementList.Count} elements found");
+                    return elementList;
+                }
+                DebugOutput.Log($"Instant Check");
+                var elementsQuick = webDriver.FindElements(locator);
+                foreach (var element in elementsQuick)
+                {
+                    elementList.Add(element);
+                }
+                DebugOutput.Log($"We have {elementList.Count} elements found");
+                return elementList;
+            }
+            catch
+            {
+                DebugOutput.Log("FAILED GET ELEMENTSSSS");
+                return elementList;
+            }
+        }
+
         public static string GetElementText(IWebElement element)
         {
             DebugOutput.Log($"Sel - GetElementText {element} ");
@@ -243,7 +278,6 @@ namespace Core
             if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "text"))) return SeleniumUtil.GetElementAttributeValue(element, "text");
             DebugOutput.Log($"Attribute Value");
             if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "value"))) return SeleniumUtil.GetElementAttributeValue(element, "value");
-            DebugOutput.Log($"Failed to get any text from {element}"); 
             DebugOutput.Log($"Attribute textContent");
             if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "textContent"))) return SeleniumUtil.GetElementAttributeValue(element, "textContent");
             return "";

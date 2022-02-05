@@ -32,6 +32,8 @@ namespace AppTargets.Forms
             Elements.Add("right click me button", By.Id("rightClickBtn"));
             Elements.Add("click me button", By.XPath("//div[3]/button[1]"));
 
+            //Table
+            Elements.Add("react table", By.XPath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[1]/div[3]"));
 
 
             // Page Dictionary
