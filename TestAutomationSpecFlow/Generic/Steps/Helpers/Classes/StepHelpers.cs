@@ -28,6 +28,7 @@ namespace Generic.Steps.Helpers.Classes
         public IAccordionStepHelper Accordion { get; private set; }
         public IButtonStepHelper Button { get; private set; }   
         public IPageStepHelper Page { get; private set; }
+        public IRadioButtonStepHelper RadioButton { get; private set; }
         public ITextBoxStepHelper TextBox { get; private set; }
         public ITreeStepHelper Tree { get; private set; }   
 
@@ -36,6 +37,7 @@ namespace Generic.Steps.Helpers.Classes
             Accordion = new AccordionStepHelper(featureContext, targetForms);
             Button = new ButtonStepHelper(featureContext, targetForms);
             Page = new PageStepHelper(featureContext, targetForms);
+            RadioButton = new RadioButtonStepHelper(featureContext, targetForms);
             TextBox = new TextBoxStepHelper(featureContext, targetForms);
             Tree = new TreeStepHelper(featureContext, targetForms);
         }

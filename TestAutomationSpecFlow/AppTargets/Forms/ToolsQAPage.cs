@@ -25,7 +25,7 @@ namespace AppTargets.Forms
             //Radio Button
             Elements.Add("yes radiobutton", By.Id("yesRadio"));
             Elements.Add("impressive radiobutton", By.Id("impressiveRadio"));
-            Elements.Add("No radiobutton", By.Id("noRadio"));
+            Elements.Add("no radiobutton", By.Id("noRadio"));
 
 
             // Page Dictionary

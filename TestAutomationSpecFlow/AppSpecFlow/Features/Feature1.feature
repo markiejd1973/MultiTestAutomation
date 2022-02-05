@@ -83,3 +83,17 @@ Scenario Outline: AA000010-0000 START
 	
 Scenario Outline: AA000010-0300 Radio Button
 	When I Click Button "Radio Button" In Accordion "accordian"
+	Then RadioButton "Yes" Is Displayed
+	Then RadioButton "Impressive" Is Displayed
+	Then RadioButton "No" Is Displayed
+	
+Scenario Outline: AA000010-0310 Radio Button Read Only
+	Then RadioButton "No" Is Read Only
+	Then RadioButton "Yes" Is Enabled
+	Then RadioButton "Yes" Is Not Selected
+
+Scenario Outline: AA000010-030 Select The Other
+	When I Click On RadioButton "Impressive"
+	Then RadioButton "Impressive" Is Selected
+	Then RadioButton "Yes" Is Not Selected
+	

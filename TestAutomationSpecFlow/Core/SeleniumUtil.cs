@@ -49,6 +49,26 @@ namespace Core
             return SendKey(element, key);           
         }
 
+
+        public static bool MoveToElement(IWebElement element)
+        {
+            DebugOutput.Log($"Sel - MoveToElement {element} ");
+            try
+            {
+                Actions action = new Actions(webDriver);
+                action.MoveToElement(element);
+                action.Perform();
+                return true;
+            }
+            catch
+            {
+                DebugOutput.Log($"Failed to move!");
+                return false;
+            }
+        }
+
+        // PRIVATE
+
         private static bool SendKey(IWebElement element, string key)
         {
             DebugOutput.Log($"Sel - SendKey {element} {key}");
@@ -85,6 +105,36 @@ namespace Core
                 DebugOutput.Log($"problem sending key!");
                 return false;
             }
+        }
+
+        public static bool IsEnabled(IWebElement element)
+        {
+            DebugOutput.Log($"Sel - IsEnabled {element} ");
+            try
+            {
+                return element.Enabled;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Log($"Had a failed returning elements Enabled flag! {ex}");
+                return false;
+            }
+        }
+
+        public static bool IsSelected(IWebElement element)
+        {
+            DebugOutput.Log($"Sel - IsSelected {element} ");
+            try
+            {
+                DebugOutput.Log($"IT IS {element.Selected}");
+                return element.Selected;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Log($"Had a failed returning elements Selected flag! {ex}");
+                return false;
+            }
+
         }
 
         public static IWebElement GetElement(By locator, int timeout = 0)

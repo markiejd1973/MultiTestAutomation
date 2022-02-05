@@ -182,6 +182,105 @@ this.ScenarioInitialize(scenarioInfo);
 #line 85
  testRunner.When("I Click Button \"Radio Button\" In Accordion \"accordian\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 86
+ testRunner.Then("RadioButton \"Yes\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 87
+ testRunner.Then("RadioButton \"Impressive\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 88
+ testRunner.Then("RadioButton \"No\" Is Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-0310 Radio Button Read Only")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AA000010-MenuTest")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("all")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Pipeline1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("pipeline2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AA000010")]
+        public virtual void AA000010_0310RadioButtonReadOnly()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-0310 Radio Button Read Only", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 90
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 91
+ testRunner.Then("RadioButton \"No\" Is Read Only", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 92
+ testRunner.Then("RadioButton \"Yes\" Is Enabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 93
+ testRunner.Then("RadioButton \"Yes\" Is Not Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("AA000010-030 Select The Other")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AA000010-MenuTest")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("all")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Pipeline1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("pipeline2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("AA000010")]
+        public virtual void AA000010_030SelectTheOther()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("AA000010-030 Select The Other", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 95
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 96
+ testRunner.When("I Click On RadioButton \"Impressive\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 97
+ testRunner.Then("RadioButton \"Impressive\" Is Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 98
+ testRunner.Then("RadioButton \"Yes\" Is Not Selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
