@@ -10,6 +10,7 @@ namespace Generic.Steps.Helpers.Interfaces
         /// 
         IAccordionStepHelper Accordion { get; } 
         IButtonStepHelper Button { get; }   
+        ILinkStepHelper Link { get; }
         IPageStepHelper Page { get; }
         IRadioButtonStepHelper RadioButton { get; } 
         ITableStepHelper Table { get; }

@@ -35,6 +35,9 @@ namespace AppTargets.Forms
             //Table
             Elements.Add("react table", By.XPath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[1]/div[3]"));
 
+            //Link
+            Elements.Add("home link", By.Id("simpleLink"));
+
 
             // Page Dictionary
             ElementXPath.Add("value", "definition");
