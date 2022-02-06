@@ -29,12 +29,48 @@ namespace Generic.Steps.Helpers.Classes
 
         private readonly By[] bodyGridCell = { By.ClassName($"rt-td") };
 
+        private readonly By[] nextPageButton = { By.XPath("//button[contains(text(),'Next')]") };
+        private readonly By[] previousPageButton = { By.XPath("//button[contains(text(),'Previous')]") };
+
+        private readonly By[] filterLocator = { By.Id("searchBox") };
+
+
+        public bool Filter(string tableName, string value)
+        {
+            DebugOutput.Log($"Filter {tableName} {value}");
+            var filterTextBox = SeleniumUtil.GetElement(filterLocator[versionNumber]);
+            if (filterTextBox == null) return false;
+            return SeleniumUtil.EnterText(filterTextBox, value);
+        }
+
         public bool IsDisplayed(string tableName)
         {
             DebugOutput.Log($"IsDisplayed {tableName}");
             var tableElement = GetTableElement(tableName);
             if (tableElement == null) return false;
             return tableElement.Displayed;
+        }
+
+        public bool IsColumnContainValue(string tableName, string columnName, string value)
+        {
+            DebugOutput.Log($"IsColumnContainValue {tableName}");
+            var tableElement = GetTableElement(tableName);
+            if (tableElement == null) return false;
+            int columnNumber = GetColumnNumberFromTitle(tableElement, columnName);  
+            if (columnNumber == -1) return false;
+            DebugOutput.Log($"Checking in Column {columnNumber}");
+            var numberofDisplayedRows = GetNumberOfRowsDisplayed(tableName);
+            var numberofPopulatedRows = GetNumberOfPopulatedRowsDisplayed(tableName);
+            DebugOutput.Log($"We have {numberofDisplayedRows} displayed and {numberofPopulatedRows} populated");
+            var counter = 1;
+            while(counter <= numberofPopulatedRows)
+            {
+                var text = GetValueOfGridBox(tableName, counter, columnNumber);
+                if (text == value) return true;
+                counter++;
+            }
+            DebugOutput.Log($"Cycled - not found!");
+            return false;
         }
 
         public int GetNumberOfRowsDisplayed(string tableName)
@@ -65,6 +101,17 @@ namespace Generic.Steps.Helpers.Classes
             return numberOfPopulatedRows;
         }
 
+        public string GetValueOfGridBoxUsingColumnTitle(string tableName, string columnTitle, int rowNumber)
+        {
+            DebugOutput.Log($"GetValueOfGridBoxUsingColumnTitle {tableName} {columnTitle} {rowNumber}");
+            //row includes headerincudes something?
+            var tableElement = GetTableElement(tableName);
+            if (tableElement == null) return "";
+            var columnNumber = GetColumnNumberFromTitle(tableElement, columnTitle);
+            if (columnNumber == -1) return "";
+            return GetValueOfGridBox(tableName, rowNumber, columnNumber);
+        }
+
         public string GetValueOfGridBox(string tableName, int rowNumber, int columnNumber)
         {
             DebugOutput.Log($"GetValueOfGridBox {tableName} {rowNumber} {columnNumber}");
@@ -85,6 +132,21 @@ namespace Generic.Steps.Helpers.Classes
 
 
         //PRIVATE
+
+        private int GetColumnNumberFromTitle(IWebElement tableElement, string columnTitle)
+        {
+            DebugOutput.Log($"GetColumnNumberFromTitle {tableElement} {columnTitle}");
+            var columnTitleElements = SeleniumUtil.GetElementsUnder(tableElement, headRowText[versionNumber]);
+            int columnNumber = 1;
+            foreach (var columnElement in columnTitleElements)
+            {
+                var text = SeleniumUtil.GetElementText(columnElement);
+                if (text == columnTitle) return columnNumber;
+                columnNumber++;
+            }
+            DebugOutput.Log($"Failed to find {columnTitle}");
+            return -1;
+        }
 
         private List<IWebElement> GetAllRows(IWebElement tableElement)
         {

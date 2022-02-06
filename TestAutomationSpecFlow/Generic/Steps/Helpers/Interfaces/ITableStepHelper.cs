@@ -11,6 +11,9 @@ namespace Generic.Steps.Helpers.Interfaces
         int GetNumberOfRowsDisplayed(string tableName);
         int GetNumberOfPopulatedRowsDisplayed(string tableName);
         string GetValueOfGridBox(string tableName, int rowNumber, int columnNumber);
+        string GetValueOfGridBoxUsingColumnTitle(string tableName, string columnTitle, int rowNumber);
+        bool Filter(string tableName, string value);
+        bool IsColumnContainValue(string tableName, string columnName, string value);
         bool IsDisplayed(string tableName);
     }
 }

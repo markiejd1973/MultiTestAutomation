@@ -61,6 +61,23 @@ namespace Generic.Elements.Steps.Button
             Assert.Inconclusive();
         }
 
+        [Then(@"Table ""([^""]*)"" Column Title ""([^""]*)"" Row (.*) Is Equal To ""([^""]*)""")]
+        public void ThenTableColumnTitleRowIsEqualTo(string tableName, string columnTitle, int rowNumber, string value)
+        {
+            string proc = $"Then Table {tableName} Column Title {columnTitle} Row {rowNumber} Is Equal To {value}";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Table.GetValueOfGridBoxUsingColumnTitle(tableName, columnTitle, rowNumber) == value)
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+
         [Then(@"Table ""([^""]*)"" Row (.*) Column (.*) Is Equal To ""([^""]*)""")]
         public void ThenTableRowColumnIsEqualTo(string tableName, int rowNumber, int columnNumber, string value)
         {
@@ -68,6 +85,22 @@ namespace Generic.Elements.Steps.Button
             if (CombinedSteps.OuputProc(proc))
             {
                 if (Helpers.Table.GetValueOfGridBox(tableName, rowNumber, columnNumber) == value)
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+        [Then(@"Table ""([^""]*)"" Column Title ""([^""]*)"" Contains Value ""([^""]*)""")]
+        public void ThenTableColumnTitleContainsValue(string tableName, string columnName, string value)
+        {
+            string proc = $"Then Table {tableName} Column Title {columnName} Contains Value {value}";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Table.IsColumnContainValue(tableName, columnName, value))   
                 {
                     return;
                 }
