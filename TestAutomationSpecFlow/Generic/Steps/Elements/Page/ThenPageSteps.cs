@@ -13,6 +13,23 @@ namespace Generic.Elements.Steps.Button
         {
         }
 
+        [Then(@"Page ""([^""]*)"" Is Displayed")]
+        public void ThenPageIsDisplayed(string pageName)
+        {
+            string proc = $"Then Page {pageName} Is Displayed";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Page.IsDisplayed(pageName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+
         [Then(@"Page Displays Message ""([^""]*)""")]
         public void ThenPageDisplaysMessage(string message)
         {

@@ -13,7 +13,8 @@ namespace Generic.Steps.Helpers.Interfaces
         IImageStepHelper Image { get; }
         ILinkStepHelper Link { get; }
         IPageStepHelper Page { get; }
-        IRadioButtonStepHelper RadioButton { get; } 
+        IRadioButtonStepHelper RadioButton { get; }
+        ISpanStepHelper Span { get; }
         ITableStepHelper Table { get; }
         ITextBoxStepHelper TextBox { get; }
         ITreeStepHelper Tree { get; }

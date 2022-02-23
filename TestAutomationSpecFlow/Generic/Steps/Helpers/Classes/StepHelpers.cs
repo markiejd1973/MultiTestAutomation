@@ -27,6 +27,7 @@ namespace Generic.Steps.Helpers.Classes
         public ILinkStepHelper Link { get; private set; }
         public IPageStepHelper Page { get; private set; }
         public IRadioButtonStepHelper RadioButton { get; private set; }
+        public ISpanStepHelper Span { get; private set; }
         public ITableStepHelper Table { get; private set; }
         public ITextBoxStepHelper TextBox { get; private set; }
         public ITreeStepHelper Tree { get; private set; }   
@@ -39,6 +40,7 @@ namespace Generic.Steps.Helpers.Classes
             Link = new LinkStepHelper(featureContext, targetForms);
             Page = new PageStepHelper(featureContext, targetForms);
             RadioButton = new RadioButtonStepHelper(featureContext, targetForms);
+            Span = new SpanStepHelper(featureContext, targetForms);
             Table = new TableStepHelper(featureContext, targetForms);
             TextBox = new TextBoxStepHelper(featureContext, targetForms);
             Tree = new TreeStepHelper(featureContext, targetForms);
