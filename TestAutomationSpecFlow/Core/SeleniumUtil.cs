@@ -4,6 +4,7 @@ using Core.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using System.Drawing;
 
 namespace Core
 {
@@ -127,6 +128,33 @@ namespace Core
                 DebugOutput.Log($"Failed to move!");
                 return false;
             }
+        }
+
+        /// <summary>
+        /// You have an element - lets take a photo!
+        /// </summary>
+        /// <param name="element"></param>
+        public static bool ScreenShotElement(IWebElement element, string elementName)
+        {
+            DebugOutput.Log($"Proc - ScreenShotElement {element} {elementName} ");
+            try
+            {
+                Screenshot sc = ((ITakesScreenshot)webDriver).GetScreenshot();
+                var img = Image.FromStream(new MemoryStream(sc.AsByteArray)) as Bitmap;
+                var x = img.Clone(new Rectangle(element.Location, element.Size), img.PixelFormat);
+                var fullfileName = outputFolder + $"{elementName}.png";
+                x.Save(fullfileName, System.Drawing.Imaging.ImageFormat.Png);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public static void SetWindowSize(int x, int y)
+        {
+            webDriver.Manage().Window.Size = new System.Drawing.Size(x, y);
         }
 
         // PRIVATE

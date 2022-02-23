@@ -21,6 +21,7 @@ namespace Generic.Elements.Steps.Button
             {
                 if (Helpers.Page.IsDisplayed(pageName))
                 {
+                    Helpers.Page.SetCurrentPage(pageName);
                     return;
                 }
                 Assert.Fail(proc + "FAILED");

@@ -1,4 +1,5 @@
-﻿using Core.Logging;
+﻿using Core;
+using Core.Logging;
 using Generic.Steps;
 using Generic.Steps.Helpers.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -24,6 +25,13 @@ namespace Generic.Elements.Steps.Page
             }
             Assert.Fail("failed");
         }
+
+        [Given(@"Page Size (.*) x (.*)")]
+        public void GivenPageSizeX(int widthPixels, int heightPixels)
+        {
+            SeleniumUtil.SetWindowSize(widthPixels, heightPixels);
+        }
+
 
     }
 }

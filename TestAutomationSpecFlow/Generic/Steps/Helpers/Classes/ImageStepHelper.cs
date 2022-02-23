@@ -4,6 +4,7 @@ using TechTalk.SpecFlow;
 using Core.Logging;
 using Core;
 using Generic.Steps.Helpers.Interfaces;
+using OpenQA.Selenium;
 
 namespace Generic.Steps.Helpers.Classes
 {
@@ -40,6 +41,36 @@ namespace Generic.Steps.Helpers.Classes
 			DebugOutput.Log($"Found image within image @ {imageLocation}");
 			return true;
 		}
+
+		public bool ClickOnMiddleOfImage(string image)
+        {
+			return false;
+        }
+
+		public bool GetImageOfElement(string image)
+        {
+			var element = GetImageElement(image);
+			if (element == null) return false;
+			return SeleniumUtil.ScreenShotElement(element, image);
+        }
+
+		private IWebElement GetImageElement(string image)
+		{
+			image = GetImageName(image);
+			DebugOutput.Log($"GetImageElement {image}");
+			var imageLocator = CurrentPage.Elements[image];
+			var imageElement = SeleniumUtil.GetElement(imageLocator);
+			if (imageElement == null) return null;
+			DebugOutput.Log($"Image Element {image} = {imageElement}");
+			return imageElement;
+		}
+
+		private string GetImageName(string image)
+        {
+			image = image.ToLower();
+			if (image.Contains(" image")) return image;
+			return image + " image";
+        }
 
 		public bool ClickOnImageInImage(string subImage, string image)
 		{

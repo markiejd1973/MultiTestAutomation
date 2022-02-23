@@ -13,6 +13,7 @@ namespace Generic.Elements.Steps.TextBox
         {
         }
 
+        [Given(@"TextBox ""([^""]*)"" Is Displayed")]
         [Then(@"TextBox ""([^""]*)"" Is Displayed")]
         public void GivenButtonIsDisplayed(string textBoxName)
         {

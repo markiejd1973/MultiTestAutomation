@@ -10,6 +10,8 @@ namespace AppTargets.Forms
             // Add Elements
             Elements.Add("ID", By.Id("firstHeading"));
 
+            Elements.Add("search", By.Id("searchInput"));
+
             // Page Dictionary
             ElementXPath.Add("value", "definition");
         }
