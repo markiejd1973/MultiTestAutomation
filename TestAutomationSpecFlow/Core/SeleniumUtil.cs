@@ -34,6 +34,27 @@ namespace Core
             }
         }
 
+        public static bool ClickCoordinates(IWebElement element, int x = 0, int y = 0)
+        {
+            DebugOutput.Log($"Sel - ClickCoordinates {element} {x} {y}");
+
+            try
+            {
+                Actions action = new Actions(webDriver);
+                action.MoveToElement(element);
+                action.MoveByOffset(x, y);
+                action.Click();
+                action.Build();
+                action.Perform();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Log($"Failed to click {element} {ex}");
+                return false;
+            }
+        }
+
         public static bool DoubleClick(IWebElement element)
         {
             DebugOutput.Log($"Sel - Click {element}");

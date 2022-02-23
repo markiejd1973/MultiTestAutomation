@@ -1,11 +1,5 @@
 ﻿using Core;
-using Generic.Steps.Helpers.Classes;
 using Generic.Steps.Helpers.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace Generic.Steps.Helpers.Classes
@@ -15,7 +9,9 @@ namespace Generic.Steps.Helpers.Classes
         private readonly FeatureContext featureContext;
         private readonly ITargetForms targetForms;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public StepHelpers(FeatureContext featureContext, ITargetForms targetForms)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             this.featureContext = featureContext;
             this.targetForms = targetForms;
@@ -26,7 +22,8 @@ namespace Generic.Steps.Helpers.Classes
         /// Add new ElementStepHelper.cs needs to populate BELOW
         /// </summary>
         public IAccordionStepHelper Accordion { get; private set; }
-        public IButtonStepHelper Button { get; private set; }   
+        public IButtonStepHelper Button { get; private set; }
+        public IImageStepHelper Image { get; private set; }
         public ILinkStepHelper Link { get; private set; }
         public IPageStepHelper Page { get; private set; }
         public IRadioButtonStepHelper RadioButton { get; private set; }
@@ -38,6 +35,7 @@ namespace Generic.Steps.Helpers.Classes
         {
             Accordion = new AccordionStepHelper(featureContext, targetForms);
             Button = new ButtonStepHelper(featureContext, targetForms);
+            Image = new ImageStepHelper(featureContext, targetForms);
             Link = new LinkStepHelper(featureContext, targetForms);
             Page = new PageStepHelper(featureContext, targetForms);
             RadioButton = new RadioButtonStepHelper(featureContext, targetForms);

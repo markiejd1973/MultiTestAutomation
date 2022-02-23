@@ -1,0 +1,18 @@
+﻿{
+  "ApplicationType": "web",
+  "Browser": "chrome",
+  "StartUrlx": "http://localhost:4200",
+  "StartUrl": "https://demoqa.com/elements",
+  "ApiUrl": "https://demoqa.com/",
+  "PositiveTimeout": 15,
+  "NegativeTimeout": 2,
+  "DateFormat": "UK",
+  "AreaPath": "All Assets\\Other Projects\\QA",
+  "OutputOnly": false,
+  "FeatureFileOnly": false,
+  "ApiDatabaseName": "aa-local-bdd-app-sqldb",
+  "InstallLocation": "c:\\temp\\IP_2021_4_4_0.exe",
+  "TimeoutMultiplie": 1,
+  "SkipOnFailure": true,
+  "FirstPage": "login"
+}

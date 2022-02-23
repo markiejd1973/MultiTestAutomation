@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Steps\Elements\NewFolder\" />
+    <Folder Include="Steps\Elements\Image\" />
   </ItemGroup>
 
 </Project>
