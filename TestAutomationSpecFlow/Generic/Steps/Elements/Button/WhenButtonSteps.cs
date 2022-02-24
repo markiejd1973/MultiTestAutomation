@@ -61,6 +61,23 @@ namespace Generic.Elements.Steps.Button
             Assert.Inconclusive();
         }
 
+        [When(@"I Mouse Over Button ""([^""]*)""")]
+        public void WhenIMouseOverButton(string buttonName)
+        {
+            string proc = $"When I Mouse Over Button {buttonName}";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Button.MouseOver(buttonName))
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+
 
 
 

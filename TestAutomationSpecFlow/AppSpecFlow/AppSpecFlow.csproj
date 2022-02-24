@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\CGI\AutoQA.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\CGI\CGIWelcome - Copy.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\Wikipedia\CGIWelcome.feature.cs" />
   </ItemGroup>
 
@@ -34,12 +35,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Features\CGI\CGICars.feature.cs">
+      <DependentUpon>CGICars.feature</DependentUpon>
+    </Compile>
     <Compile Update="Features\Wikipedia\WikiTest.feature.cs">
       <DependentUpon>WikiTest.feature</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\CGI\CGICars.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\CGI\CGIWelcome.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>

@@ -46,6 +46,13 @@ namespace Generic.Steps.Helpers.Classes
             return SeleniumUtil.RightClick(buttonElement);
         }
 
+        public bool MouseOver(string buttonName)
+        {
+            DebugOutput.Log($"MouseOver {buttonName}");
+            var buttonElement = GetButtonElement(buttonName);
+            if (buttonElement == null) return false;
+            return SeleniumUtil.MoveToElement(buttonElement);
+        }
 
 
         //  PRIVATE

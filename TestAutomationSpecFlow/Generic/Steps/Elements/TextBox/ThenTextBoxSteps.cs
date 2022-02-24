@@ -15,7 +15,7 @@ namespace Generic.Elements.Steps.TextBox
 
         [Given(@"TextBox ""([^""]*)"" Is Displayed")]
         [Then(@"TextBox ""([^""]*)"" Is Displayed")]
-        public void GivenButtonIsDisplayed(string textBoxName)
+        public void GivenTextBoxIsDisplayed(string textBoxName)
         {
             string proc = $"Then TextBox {textBoxName} Is Displayed";
             if (CombinedSteps.OuputProc(proc))

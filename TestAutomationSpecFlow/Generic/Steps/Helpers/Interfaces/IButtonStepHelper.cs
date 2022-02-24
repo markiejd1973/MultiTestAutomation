@@ -6,8 +6,9 @@ namespace Generic.Steps.Helpers.Interfaces
     {
         bool ClickButton(string buttonName);
         bool DoubleClick(string buttonName);
-        bool RightClick(string buttonName);
         bool IsDisplayed(string buttonName);
+        bool MouseOver(string buttonName);
+        bool RightClick(string buttonName);
 
     }
 }

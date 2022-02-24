@@ -2,7 +2,7 @@
   "ApplicationType": "web",
   "Browser": "chrome",
   "StartUrlx": "http://localhost:4200",
-  "StartUrl": "https://en.wikipedia.org/wiki/Main_Page",
+  "StartUrl": "http://cgiautomation.ukwest.cloudapp.azure.com/#",
   "ApiUrl": "https://demoqa.com/",
   "PositiveTimeout": 15,
   "NegativeTimeout": 2,
