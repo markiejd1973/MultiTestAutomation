@@ -2,6 +2,7 @@
 using Core.Configuration;
 using Core.Logging;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System.Drawing;
@@ -10,7 +11,8 @@ namespace Core
 {
     public static class SeleniumUtil
     {
-        public static IWebDriver? webDriver ;
+        public static IWebDriver? webDriver;
+        public static WindowsDriver<WindowsElement> winDriver;
         public static string outputFolder = @"..\..\..\TestOutput\";
         public static string compareFolder = @"..\..\..\TestCompare\";
         public static string failedFindElement = "Failed to find element!";
@@ -230,6 +232,28 @@ namespace Core
         public static IWebElement GetElement(By locator, int timeout = 0)
         {
             DebugOutput.Log($"Sel - GetElement {locator} {timeout}");
+            var appType = TargetConfiguration.Configuration.ApplicationType.ToLower();
+            if (appType == "web")
+            {
+                return GetWebElement(locator, timeout);
+            }
+            if (appType == "windows")
+            {
+                return GetWindowsElement(locator, timeout);
+            }
+            return null;
+        }
+
+        private static IWebElement GetWindowsElement(By locator, int timeout = 0)
+        {
+            timeout = TargetConfiguration.Configuration.PositiveTimeout;
+            DebugOutput.Log($"HELLO Using default POSITIVE TIMEOUT {timeout}");
+            var wait = new WebDriverWait(winDriver, TimeSpan.FromSeconds(timeout));
+            return wait.Until(drv => drv.FindElement(locator));
+        }
+
+        private static IWebElement GetWebElement(By locator, int timeout = 0)
+        {
             try
             {
                 if (timeout < 1)

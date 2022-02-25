@@ -18,5 +18,6 @@ namespace Generic.Steps.Helpers.Interfaces
         ITableStepHelper Table { get; }
         ITextBoxStepHelper TextBox { get; }
         ITreeStepHelper Tree { get; }
+        IWindowStepHelper Window { get; }
     }
 }

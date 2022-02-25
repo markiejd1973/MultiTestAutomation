@@ -9,6 +9,7 @@
   <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\CGI\AutoQA.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\CGI\CGIWelcome - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Notepad\CGICars.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\Wikipedia\CGIWelcome.feature.cs" />
   </ItemGroup>
 
@@ -38,6 +39,9 @@
     <Compile Update="Features\CGI\CGICars.feature.cs">
       <DependentUpon>CGICars.feature</DependentUpon>
     </Compile>
+    <Compile Update="Features\Notepad\NotepadTest.feature.cs">
+      <DependentUpon>NotepadTest.feature</DependentUpon>
+    </Compile>
     <Compile Update="Features\Wikipedia\WikiTest.feature.cs">
       <DependentUpon>WikiTest.feature</DependentUpon>
     </Compile>
@@ -49,6 +53,10 @@
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\CGI\CGIWelcome.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Notepad\NotepadTest.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
     </SpecFlowFeatureFiles>

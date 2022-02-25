@@ -30,7 +30,8 @@ namespace Generic.Steps.Helpers.Classes
         public ISpanStepHelper Span { get; private set; }
         public ITableStepHelper Table { get; private set; }
         public ITextBoxStepHelper TextBox { get; private set; }
-        public ITreeStepHelper Tree { get; private set; }   
+        public ITreeStepHelper Tree { get; private set; }
+        public IWindowStepHelper Window { get; private set; }
 
         private void InitializeHelpers()
         {
@@ -44,6 +45,7 @@ namespace Generic.Steps.Helpers.Classes
             Table = new TableStepHelper(featureContext, targetForms);
             TextBox = new TextBoxStepHelper(featureContext, targetForms);
             Tree = new TreeStepHelper(featureContext, targetForms);
+            Window = new WindowStepHelper(featureContext, targetForms);
         }
 
     }

@@ -9,6 +9,9 @@ using Generic.Steps.Helpers.Classes;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Windows;
+using OpenQA.Selenium.Appium.Enums;
 
 namespace AppSpecFlow.Libs
 {
@@ -16,6 +19,7 @@ namespace AppSpecFlow.Libs
     public class Hooks
     {
         public static IWebDriver? driver;
+        public static WindowsDriver<WindowsElement> newDriver;
 
         [BeforeTestRun]
         public static void TestSetup()
@@ -47,6 +51,14 @@ namespace AppSpecFlow.Libs
                 DebugOutput.Log($"App started - navigate to StartURL {TargetConfiguration.Configuration.StartUrl}");
                 driver.Url = $"{TargetConfiguration.Configuration.StartUrl}";
             }
+            else
+            {
+                var driverOptions = new AppiumOptions();
+                driverOptions.AddAdditionalCapability(MobileCapabilityType.App, $"{TargetConfiguration.Configuration.StartUrl}");
+                newDriver = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723/"), driverOptions);
+
+                SeleniumUtil.winDriver = newDriver;
+            }
         }
 
         private static void ChromeDriver()
@@ -59,6 +71,8 @@ namespace AppSpecFlow.Libs
         public static void TestCleanUp()
         {
             driver.Close();
+            newDriver.Close();
+
         }
 
         [BeforeFeature]

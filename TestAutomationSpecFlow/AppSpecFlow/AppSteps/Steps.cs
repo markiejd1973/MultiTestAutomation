@@ -40,7 +40,7 @@ namespace AppSpecFlow.AppSteps
 
         private GivenPageSteps GivenPageSteps { get; }
         private WhenButtonSteps WhenButtonSteps { get; }
-        private ThenTextBoxSteps ThenTextBoxSteps { get; }  
+        private ThenTextBoxSteps ThenTextBoxSteps { get; }
         private WhenTextBoxSteps WhenTextBoxSteps { get; }
 
         [Then(@"Header Is Equal To ""([^""]*)""")]
@@ -66,6 +66,23 @@ namespace AppSpecFlow.AppSteps
             }
         }
 
+        [When(@"I Enter ""([^""]*)"" In Document")]
+        public void WhenIEnterInDocument(string text)
+        {
+            string proc = $"When I Enter {text} In Document";
+            if (CombinedSteps.OuputProc(proc))
+            {
+                if (Helpers.Window.WriteInWindow("Text Editor", text)) ;
+                {
+                    return;
+                }
+                Assert.Fail(proc + "FAILED");
+                return;
+            }
+            Assert.Inconclusive();
+        }
+
+
         [Then(@"SubMenu Item ""([^""]*)"" Is Not Displayed")]
         public void ThenSubMenuItemIsNotDisplayed(string subLinkTitle)
         {
@@ -74,7 +91,7 @@ namespace AppSpecFlow.AppSteps
             if (element == null)
             {
                 xPath = $"//a[contains(text(),'{subLinkTitle}')]";
-                element = SeleniumUtil.GetElement(By.XPath(xPath),1);
+                element = SeleniumUtil.GetElement(By.XPath(xPath), 1);
                 if (element == null)
                 {
                     return;
@@ -94,11 +111,14 @@ namespace AppSpecFlow.AppSteps
             GivenPageSteps.GivenPageIsDisplayed("CGIWelcome");
             GivenPageSteps.GivenPageSizeX(1800, 1000);
             WhenButtonSteps.WhenIMouseOverButton("menu");
-            WhenIClickOnSubTitle("Login");
-            ThenTextBoxSteps.GivenTextBoxIsDisplayed("Username");
-            WhenTextBoxSteps.WhenIEnterInTextBox(userName, "Username");
-            WhenTextBoxSteps.WhenIEnterInTextBox("password=1", "Password");
-            ThenSteps.ThenWaitSeconds("1");
+            if (SubMenuItemIsDisplayed("Login"))
+            {
+                WhenIClickOnSubTitle("Login");
+                ThenTextBoxSteps.GivenTextBoxIsDisplayed("Username");
+                WhenTextBoxSteps.WhenIEnterInTextBox(userName, "Username");
+                WhenTextBoxSteps.WhenIEnterInTextBox("password=1", "Password");
+                ThenSteps.ThenWaitSeconds("1");
+            }
         }
 
 
@@ -106,24 +126,35 @@ namespace AppSpecFlow.AppSteps
         [Then(@"SubMenu Item ""([^""]*)"" Is Displayed")]
         public void ThenSubMenuItemIsDisplayed(string subLinkTitle)
         {
+            if (!SubMenuItemIsDisplayed(subLinkTitle))
+            {
+                Assert.Fail($"Not displayed!");
+                return;
+            }
+
+        }
+
+        private bool SubMenuItemIsDisplayed(string subLinkTitle)
+        {
             var xPath = $"//a[@title='{subLinkTitle}']";
             var element = SeleniumUtil.GetElement(By.XPath(xPath), 1);
             if (element == null)
             {
                 xPath = $"//a[contains(text(),'{subLinkTitle}')]";
-                element = SeleniumUtil.GetElement(By.XPath(xPath));
+                element = SeleniumUtil.GetElement(By.XPath(xPath), 1);
                 if (element == null)
                 {
-                    Assert.Fail($"Failed to find element @ {xPath}");
-                    return;
+                    return false;
                 }
             }
             if (!element.Displayed)
             {
-                Assert.Fail($"Element is there - just not displayed {xPath}");
-                return;
+                return false;
             }
+            return true;
+
         }
+
 
         [When(@"I Click On SubMenu ""([^""]*)""")]
         [When(@"I Click On SubTitle ""([^""]*)""")]

@@ -1,8 +1,8 @@
 ﻿{
-  "ApplicationType": "windows",
+  "ApplicationType": "web",
   "Browser": "chrome",
   "StartUrlx": "http://localhost:4200",
-  "StartUrl": "C:\\Windows\\System32\\notepad.exe",
+  "StartUrl": "http://cgiautomation.ukwest.cloudapp.azure.com/#",
   "ApiUrl": "https://demoqa.com/",
   "PositiveTimeout": 15,
   "NegativeTimeout": 2,
