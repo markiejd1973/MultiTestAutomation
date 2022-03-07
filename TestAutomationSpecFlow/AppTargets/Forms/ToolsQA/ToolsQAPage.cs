@@ -8,7 +8,7 @@ namespace AppTargets.Forms
         public ToolsQAPage() : base(By.Id("toolsqa"), "tools qa page")
         {
             // Add Elements
-            Elements.Add("ID", By.XPath("//body/div[@id='app']/div[1]/div[1]/div[1]/div[1][contains(text(),'Elements')]"));
+            Elements.Add("ID", By.XPath("//header/a[1]/img[1]"));
 
             //Accordion Menu
             Elements.Add("accordian", By.ClassName("accordion"));
