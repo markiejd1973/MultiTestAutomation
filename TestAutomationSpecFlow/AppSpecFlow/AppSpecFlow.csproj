@@ -54,8 +54,8 @@
     <Compile Update="Features\ToolsQA\AutoQA30.feature.cs">
       <DependentUpon>AutoQA30.feature</DependentUpon>
     </Compile>
-    <Compile Update="Features\ToolsQA\AutoQA20.feature.cs">
-      <DependentUpon>AutoQA20.feature</DependentUpon>
+    <Compile Update="Features\ToolsQA\AutoQA10.feature.cs">
+      <DependentUpon>AutoQA10.feature</DependentUpon>
     </Compile>
     <Compile Update="Features\Wikipedia\WikiTest02.feature.cs">
       <DependentUpon>WikiTest02.feature</DependentUpon>
@@ -90,7 +90,7 @@
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
     </SpecFlowFeatureFiles>
-    <SpecFlowFeatureFiles Update="Features\ToolsQA\AutoQA20.feature">
+    <SpecFlowFeatureFiles Update="Features\ToolsQA\AutoQA10.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
     </SpecFlowFeatureFiles>
