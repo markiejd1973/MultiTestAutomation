@@ -21,6 +21,8 @@ namespace Generic.Elements.Steps.Button
             {
                 if (Helpers.Window.IsDisplayed(windowName))
                 {
+                    DebugOutput.Log($"Is Displayed setting current page");
+                    Helpers.Page.SetCurrentPage(windowName);
                     return;
                 }
                 Assert.Fail(proc + "FAILED");

@@ -1,15 +1,7 @@
-﻿Feature: Calculator
-![Calculator](https://specflow.org/wp-content/uploads/2020/09/calculator.png)
-Simple calculator for adding **two** numbers
-
-Link to a feature: [Calculator](AppSpecFlow/Features/Calculator.feature)
-***Further read***: **[Learn more about how to generate Living Documentation](https://docs.specflow.org/projects/specflow-livingdoc/en/latest/LivingDocGenerator/Generating-Documentation.html)**
-
-@mytag
-Scenario: Add two numbers
-	#Given the first number is 50
-	Given the second number is 70
-	When the two numbers are added
-	Then the result should be 120
-	#Given I Have Failed
-	#Given the first number is 50
+﻿@all @Pipeline1 @pipeline2 @CALC0011
+Feature: Calc0011-Calculator Test
+	A Quick walk through Calculator
+	
+Scenario Outline: CALC0011-0010 Confirm Page
+	Given Window "Calculator" Is Displayed
+	Then Button "One" Is Displayed

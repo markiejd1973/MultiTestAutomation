@@ -16,9 +16,21 @@ namespace Generic.Steps.Helpers.Classes
 
         public bool IsDisplayed(string windowsName)
         {
-            DebugOutput.Log($"HELLO");
+            DebugOutput.Log($"IsDisplayed {windowsName}");
             By windowsLocator = By.Name(windowsName);
             var element = SeleniumUtil.GetElement(windowsLocator);
+            if (element == null)
+            {
+                DebugOutput.Log($"Contains the name? {windowsName}");
+                var xPath = $"//Window[contains(@Name,'{windowsName}')]";
+                By xPathLocator = By.XPath(xPath);
+                element = SeleniumUtil.GetElement(xPathLocator, 1);
+            }
+            if (element == null)
+            {
+                DebugOutput.Log($"No element found!");
+                return false;
+            }
             return element.Displayed;
         }
 

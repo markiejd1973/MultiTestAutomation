@@ -247,9 +247,17 @@ namespace Core
         private static IWebElement GetWindowsElement(By locator, int timeout = 0)
         {
             timeout = TargetConfiguration.Configuration.PositiveTimeout;
-            DebugOutput.Log($"HELLO Using default POSITIVE TIMEOUT {timeout}");
-            var wait = new WebDriverWait(winDriver, TimeSpan.FromSeconds(timeout));
-            return wait.Until(drv => drv.FindElement(locator));
+            DebugOutput.Log($"GetWindowsElement {locator} Using default POSITIVE TIMEOUT {timeout}");
+            try
+            {
+                var wait = new WebDriverWait(winDriver, TimeSpan.FromSeconds(timeout));
+                return wait.Until(drv => drv.FindElement(locator));
+            }
+            catch
+            {
+                DebugOutput.Log("FAILED GET ELEMENT");
+                return null;
+            }
         }
 
         private static IWebElement GetWebElement(By locator, int timeout = 0)

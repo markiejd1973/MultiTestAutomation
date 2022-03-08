@@ -3,13 +3,14 @@ using OpenQA.Selenium;
 
 namespace AppTargets.Forms
 {
-    public class NotepadPage : FormBase
+    public class CalculatorPage : FormBase
     {
-        public NotepadPage() : base(By.Id("notepad"), "notepad page")
+        public CalculatorPage() : base(By.Id("calculator"), "calculator page")
         {
             // Add Elements
             Elements.Add("ID", By.Id("PageID"));
 
+            Elements.Add("one button", By.Name("One"));
 
             // Page Dictionary
             ElementXPath.Add("value", "definition");

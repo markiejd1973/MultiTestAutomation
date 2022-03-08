@@ -56,7 +56,8 @@ namespace AppSpecFlow.Libs
                 var driverOptions = new AppiumOptions();
                 driverOptions.AddAdditionalCapability(MobileCapabilityType.App, $"{TargetConfiguration.Configuration.StartUrl}");
                 newDriver = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723/"), driverOptions);
-
+                var allWindowHandles = newDriver.WindowHandles;
+                newDriver.SwitchTo().Window(allWindowHandles[0]);
                 SeleniumUtil.winDriver = newDriver;
             }
         }
