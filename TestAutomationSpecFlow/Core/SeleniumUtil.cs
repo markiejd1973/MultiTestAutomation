@@ -20,10 +20,9 @@ namespace Core
         public static bool Click(IWebElement element)
         {
             DebugOutput.Log($"Sel - Click {element}");
-
+            var action = GetActions();
             try
             {
-                Actions action = new Actions(webDriver);
                 action.MoveToElement(element);
                 action.Click();
                 action.Build();
@@ -33,17 +32,16 @@ namespace Core
             catch (Exception ex)
             {
                 DebugOutput.Log($"Failed to click {element} {ex}");
-                return false;   
+                return false;
             }
         }
 
         public static bool ClickCoordinates(IWebElement element, int x = 0, int y = 0)
         {
             DebugOutput.Log($"Sel - ClickCoordinates {element} {x} {y}");
-
+            var action = GetActions();
             try
             {
-                Actions action = new Actions(webDriver);
                 action.MoveToElement(element);
                 action.MoveByOffset(x, y);
                 action.Click();
@@ -61,10 +59,9 @@ namespace Core
         public static bool DoubleClick(IWebElement element)
         {
             DebugOutput.Log($"Sel - Click {element}");
-
+            var action = GetActions();
             try
             {
-                Actions action = new Actions(webDriver);
                 action.MoveToElement(element);
                 action.DoubleClick();
                 action.Build();
@@ -81,10 +78,9 @@ namespace Core
         public static bool RightClick(IWebElement element)
         {
             DebugOutput.Log($"Sel - Click {element}");
-
+            var action = GetActions();
             try
             {
-                Actions action = new Actions(webDriver);
                 action.MoveToElement(element);
                 action.ContextClick();
                 action.Build();
@@ -118,9 +114,9 @@ namespace Core
         public static bool MoveToElement(IWebElement element)
         {
             DebugOutput.Log($"Sel - MoveToElement {element} ");
+            var action = GetActions();
             try
             {
-                Actions action = new Actions(webDriver);
                 action.MoveToElement(element);
                 action.Perform();
                 return true;
@@ -256,6 +252,21 @@ namespace Core
             catch
             {
                 DebugOutput.Log("FAILED GET ELEMENT");
+                string locatorXPath = locator.ToString();
+                if (locatorXPath.Contains("By.Id: "))
+                {
+                    locatorXPath = locatorXPath.Replace("By.Id: ", "");
+                    DebugOutput.Log($"Using Accesibiluy = {locatorXPath}");
+                    try
+                    {
+                        return winDriver.FindElementByAccessibilityId(locatorXPath);
+                    }
+                    catch
+                    {
+                        DebugOutput.Log($"Not even accessibility");
+                    }
+                }
+                DebugOutput.Log($"LOCATOR = {locator}");
                 return null;
             }
         }
@@ -361,7 +372,8 @@ namespace Core
             if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "value"))) return SeleniumUtil.GetElementAttributeValue(element, "value");
             DebugOutput.Log($"Attribute textContent");
             if (!string.IsNullOrEmpty(GetElementAttributeValue(element, "textContent"))) return SeleniumUtil.GetElementAttributeValue(element, "textContent");
-            return "";
+            DebugOutput.Log($"Direct");
+            return element.Text;
         }
 
         public static string GetElementAttributeValue(IWebElement element, string attribute)
@@ -401,6 +413,25 @@ namespace Core
                 return null;
             }
         }
+
+
+
+        private static Actions GetActions()
+        {
+            if (TargetConfiguration.Configuration.ApplicationType.ToLower() == "web")
+            {
+                Actions action = new Actions(webDriver);
+                return action;
+            }
+            if (TargetConfiguration.Configuration.ApplicationType.ToLower() == "windows")
+            {
+                Actions action = new Actions(winDriver);
+                return action;
+            }
+            DebugOutput.Log($"Failed to get ACTION!");
+            return null;
+        }
+
 
     }
 }

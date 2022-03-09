@@ -19,9 +19,21 @@ namespace Generic.Steps.Helpers.Classes
             DebugOutput.Log($"GetText {textBoxName}");
             textBoxName = textBoxName.ToLower();
             var textBoxElement = GetTextBox(textBoxName);
-            if (textBoxElement == null) return "";
+            if (textBoxElement == null)
+            {
+                DebugOutput.Log($"Failed to get TextBox");
+                return "";
+            }
             string text = GetTextFromElement(textBoxElement);
-            if (text == null) return "";
+            if (text == null)
+            {
+                DebugOutput.Log($"Failed to get ANY Text");
+                return "";
+            }
+            if (text.Contains("Display is"))
+            {
+                text = text.Replace("Display is ", "");
+            }
             DebugOutput.Log($"gotten {text} from textBox {textBoxName}");
             return text;
         }
@@ -79,6 +91,10 @@ namespace Generic.Steps.Helpers.Classes
             DebugOutput.Log($"We have the LOCATOR for Accordion {textBoxName} {textBoxLocator}");
             var element = SeleniumUtil.GetElement(textBoxLocator);
             DebugOutput.Log($"TextBox Element {textBoxName} = {element}");
+            if (element == null)
+            {
+                DebugOutput.Log($"WE HAVE FOUND NO TEXT BOX {textBoxName}");
+            }
             return element;
 
         }

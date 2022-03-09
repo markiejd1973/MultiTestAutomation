@@ -5,3 +5,11 @@ Feature: Calc0011-Calculator Test
 Scenario Outline: CALC0011-0010 Confirm Page
 	Given Window "Calculator" Is Displayed
 	Then Button "One" Is Displayed
+	
+Scenario Outline: CALC0011-0020 Hit Buttons
+	When I Click On Button "Five"
+	When I Click On Button "5"
+	When I Click On Button "Multiply By"
+	When I Click On Button "9"
+	When I Click On Button "="
+	Then TextBox "Text" Is Equal To "495"
