@@ -60,12 +60,20 @@ namespace Generic.Steps.Helpers.Classes
         private IWebElement GetButtonElement(string buttonName)
         {
             DebugOutput.Log($"Getbutton {buttonName}");
-            buttonName = GetButtonName(buttonName);
-            var buttonLocator = CurrentPage.Elements[buttonName];
-            var buttonElement = SeleniumUtil.GetElement(buttonLocator);
-            if (buttonElement == null) return null;
-            DebugOutput.Log($"Button Element {buttonName} = {buttonElement}");
-            return buttonElement;
+            var newButtonName = GetButtonName(buttonName);
+            if (CurrentPage.Elements.TryGetValue(newButtonName, out var buttonLocator))
+            {
+                DebugOutput.Log("Found button in dic");
+                var buttonElement = SeleniumUtil.GetElement(buttonLocator);
+                if (buttonElement != null) return buttonElement;
+            }
+            var namedButtonElement = SeleniumUtil.GetElement(By.Name(buttonName));
+            if (namedButtonElement == null)
+            {
+                DebugOutput.Log($"Even after just name");
+                return null;
+            }
+            return namedButtonElement;
         }
 
         private string GetButtonName(string buttonName)

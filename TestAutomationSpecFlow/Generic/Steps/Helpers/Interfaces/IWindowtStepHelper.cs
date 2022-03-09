@@ -8,6 +8,7 @@ namespace Generic.Steps.Helpers.Interfaces
 {
     public interface IWindowStepHelper : IStepHelper
     {
+        bool CloseWindow(string windowsName);
         bool IsDisplayed(string windowsName);
         bool WriteInWindow(string documentName, string text);
     }

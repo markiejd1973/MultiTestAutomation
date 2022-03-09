@@ -13,3 +13,6 @@ Scenario Outline: CALC0011-0020 Hit Buttons
 	When I Click On Button "9"
 	When I Click On Button "="
 	Then TextBox "Text" Is Equal To "495"
+	
+Scenario Outline: CALC0011-9999 Close Window
+	When I Close Window "Calculator"

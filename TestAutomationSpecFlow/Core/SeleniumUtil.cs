@@ -155,12 +155,11 @@ namespace Core
             webDriver.Manage().Window.Size = new System.Drawing.Size(x, y);
         }
 
-        // PRIVATE
-
-        private static bool SendKey(IWebElement element, string key)
+        public static bool SendKey(IWebElement element, string key)
         {
             DebugOutput.Log($"Sel - SendKey {element} {key}");
             if (string.IsNullOrEmpty(key)) return false;
+            key = key.ToLower();    
             try
             {
                 switch (key)
@@ -184,6 +183,11 @@ namespace Core
                     case "tab":
                         {
                             element.SendKeys(Keys.Tab);
+                            return true;
+                        }
+                    case "close":
+                        {
+                            element.SendKeys(Keys.Alt + Keys.F4);
                             return true;
                         }
                 }

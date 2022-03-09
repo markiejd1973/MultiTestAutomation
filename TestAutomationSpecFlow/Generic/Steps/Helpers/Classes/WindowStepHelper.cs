@@ -14,21 +14,20 @@ namespace Generic.Steps.Helpers.Classes
             this.targetForms = targetForms;
         }
 
+        public bool CloseWindow(string windowsName)
+        {
+            DebugOutput.Log($"CloseWindow ");
+            var element = GetWindowElement(windowsName);
+            return SeleniumUtil.SendKey(element, "close");
+        }
+
         public bool IsDisplayed(string windowsName)
         {
             DebugOutput.Log($"IsDisplayed {windowsName}");
-            By windowsLocator = By.Name(windowsName);
-            var element = SeleniumUtil.GetElement(windowsLocator);
+            var element = GetWindowElement(windowsName);
             if (element == null)
             {
-                DebugOutput.Log($"Contains the name? {windowsName}");
-                var xPath = $"//Window[contains(@Name,'{windowsName}')]";
-                By xPathLocator = By.XPath(xPath);
-                element = SeleniumUtil.GetElement(xPathLocator, 1);
-            }
-            if (element == null)
-            {
-                DebugOutput.Log($"No element found!");
+                DebugOutput.Log($"No element to check");
                 return false;
             }
             return element.Displayed;
@@ -39,6 +38,20 @@ namespace Generic.Steps.Helpers.Classes
             By windowsLocator = By.Name(documentName);
             var element = SeleniumUtil.GetElement(windowsLocator);
             return SeleniumUtil.EnterText(element, text);
+        }
+
+        private IWebElement GetWindowElement(string windowsName)
+        {
+            By windowsLocator = By.Name(windowsName);
+            var element = SeleniumUtil.GetElement(windowsLocator);
+            if (element == null)
+            {
+                DebugOutput.Log($"Contains the name? {windowsName}");
+                var xPath = $"//Window[contains(@Name,'{windowsName}')]";
+                By xPathLocator = By.XPath(xPath);
+                element = SeleniumUtil.GetElement(xPathLocator, 1);
+            }
+            return element;
         }
 
     }
