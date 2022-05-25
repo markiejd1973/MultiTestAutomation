@@ -8,12 +8,19 @@ using Generic.Elements.Steps.TextBox;
 using Generic.Steps;
 using Generic.Steps.Helpers.Interfaces;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Enums;
+using OpenQA.Selenium.Appium.Windows;
+using OpenQA.Selenium.Chrome;
 
 namespace AppSpecFlow.AppSteps
 {
     [Binding]
     public class Steps : StepsBase
     {
+        public static IWebDriver? driver;
+        public static WindowsDriver<WindowsElement> newDriver;
+
         public Steps(IStepHelpers helpers,
             GivenSteps givenSteps,
             WhenSteps whenSteps,
@@ -42,6 +49,31 @@ namespace AppSpecFlow.AppSteps
         private WhenButtonSteps WhenButtonSteps { get; }
         private ThenTextBoxSteps ThenTextBoxSteps { get; }
         private WhenTextBoxSteps WhenTextBoxSteps { get; }
+
+        [Given(@"Windows App ""([^""]*)"" Is Open")]
+        public void GivenWindowsAppIsOpen(string applicationName)
+        {
+            TargetConfiguration.ReadJson(applicationName);
+            var driverOptions = new AppiumOptions();
+            driverOptions.AddAdditionalCapability(MobileCapabilityType.App, $"{TargetConfiguration.Configuration.StartUrl}");
+            newDriver = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723/"), driverOptions);
+            var allWindowHandles = newDriver.WindowHandles;
+            newDriver.SwitchTo().Window(allWindowHandles[0]);
+            SeleniumUtil.winDriver = newDriver;
+        }
+
+        [Given(@"Browser ""([^""]*)"" Is Open")]
+        public void GivenBrowserIsOpen(string browserType)
+        {
+            if (TargetConfiguration.Configuration.Browser.ToLower() == "chrome")
+            {
+                driver = new ChromeDriver("c:\\chromedriver\\");
+                SeleniumUtil.webDriver = driver;
+                driver.Url = $"{TargetConfiguration.Configuration.StartUrl}";
+            }
+        }
+
+
 
         [Then(@"Header Is Equal To ""([^""]*)""")]
         public void ThenHeaderIsEqualTo(string headerText)

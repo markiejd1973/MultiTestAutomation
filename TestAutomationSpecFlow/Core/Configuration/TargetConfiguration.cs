@@ -36,11 +36,20 @@ namespace Core.Configuration
         }
 
         //public static void TargetConfiguration()
-        public static TargetConfigurationData? ReadJson()
+        public static TargetConfigurationData? ReadJson(string app = "")
         {
-            var fileName = $"targetSettings.{Environment}.json";
+            var fileName = $"targetSettings.{Environment}";
             var directory = ".\\AppTargets\\Resources\\";
-            var fullFileName = directory + fileName;
+            var fullFileName = "";
+            if (app != "")
+            {
+                fullFileName = directory + fileName + "-" + app + ".json";
+            }
+            else
+            {
+                fullFileName = directory + fileName + ".json";
+            }
+            DebugOutput.Log($"Our magic file = {fullFileName}");
             if (!FileChecker.FileCheck(fullFileName))
             {
                 DebugOutput.Log($"Unable to find the file {fullFileName}");

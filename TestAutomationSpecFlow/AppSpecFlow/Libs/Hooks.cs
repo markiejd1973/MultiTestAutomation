@@ -29,37 +29,6 @@ namespace AppSpecFlow.Libs
             TargetConfiguration.ReadJson();
 
             DebugOutput.Log($"Application Type = {TargetConfiguration.Configuration.ApplicationType}");
-            if (TargetConfiguration.Configuration.ApplicationType.ToLower() == "web")
-            {
-                DebugOutput.Log($"Web based testing");
-                DebugOutput.Log($"Application First Page Name = {TargetConfiguration.Configuration.FirstPage}");
-                if (TargetConfiguration.Configuration.Browser.ToLower() == "chrome")
-                {
-                    ChromeDriver();
-                }
-                if (TargetConfiguration.Configuration.Browser.ToLower() == "firefox")
-                {
-                    driver = new FirefoxDriver("c:\\chromedriver\\");
-                }
-                if (driver == null)
-                {
-                    DebugOutput.Log($"Failure here due to NO DRIVER");
-                    Assert.Fail("Failed no driver");
-                    return;
-                }    
-                SeleniumUtil.webDriver = driver;
-                DebugOutput.Log($"App started - navigate to StartURL {TargetConfiguration.Configuration.StartUrl}");
-                driver.Url = $"{TargetConfiguration.Configuration.StartUrl}";
-            }
-            else
-            {
-                var driverOptions = new AppiumOptions();
-                driverOptions.AddAdditionalCapability(MobileCapabilityType.App, $"{TargetConfiguration.Configuration.StartUrl}");
-                newDriver = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723/"), driverOptions);
-                var allWindowHandles = newDriver.WindowHandles;
-                newDriver.SwitchTo().Window(allWindowHandles[0]);
-                SeleniumUtil.winDriver = newDriver;
-            }
         }
 
         private static void ChromeDriver()
