@@ -4,6 +4,7 @@ Feature: QA000010-QATool All Test
 
 
 Scenario Outline: QA000010-0000 START
+	Given Browser "Chrome" Is Open
 	Given Page "ToolsQA" Is Displayed
 	Then Accordion "accordian" Is Displayed
 	Then Group "Elements" In Accordion "accordian" Is Expanded
@@ -114,6 +115,9 @@ Scenario Outline: QA000010-0420 Double Click Me
 Scenario Outline: QA000010-0430 Right Click Me
 	When I Right Click On Button "Right Click Me"
 	Then Page Displays Message "You have done a dynamic click"
+	
+Scenario Outline: QA000010-0500 Open NOTEPAD 
+	Given Windows App "Notepad" Is Open
 
 #Scenario Outline: QA000010-1000 Table
 #	When I Click Button "Web Tables" In Accordion "accordian"

@@ -1,8 +1,8 @@
 ﻿{
-  "ApplicationType": "windows",
+  "ApplicationType": "web",
   "Browser": "chrome",
   "StartUrlx": "http://localhost:4200",
-  "StartUrl": "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App",
+  "StartUrl": "https://demoqa.com/elements",
   "ApiUrl": "https://demoqa.com/",
   "PositiveTimeout": 15,
   "NegativeTimeout": 2,

@@ -4,6 +4,7 @@ Feature: NOTE0011-Notepad Test
 
 	
 Scenario Outline: NOTE0011-0010 Confirm Page
+	Given Windows App "Notepad" Is Open
 	Given Window "Notepad" Is Displayed
 	When I Enter "HELLO THERE" In Document
 	When I Enter " HELLO THERE Too" In Document
